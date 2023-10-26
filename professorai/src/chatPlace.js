@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './styles/ChatApp.css';
-import openai from 'openai'; // Import the OpenAI SDK
 
 function ChatApp() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [result, setResult] = useState('Assistant');
 
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -15,37 +13,50 @@ function ChatApp() {
     if (input.trim() === '') return;
 
     // Add the user message to the state
-    setMessages([...messages, { text: input, user: 'user' }]);
-
-    // Make an API call to OpenAI to get the response
-    const response = await getAssistantResponse(input);
-
-    // Add the assistant's response to the state
-    setMessages([...messages, { text: response, user: 'assistant' }]);
-
-    // Clear the input field
-    setInput('');
-  };
-
-  // Function to get a response from the OpenAI assistant
-  const getAssistantResponse = async (userMessage) => {
-    const apiKey = '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'; // Replace with your OpenAI API key
-    const openaiClient = new openai({ key: apiKey });
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: input, user: 'user' },
+    ]);
 
     try {
-      const response = await openaiClient.completions.create({
-        engine: 'text-davinci-002',
-        prompt: `User: ${userMessage}\nAssistant:`,
-        max_tokens: 150, // You can adjust this as needed
+      // Make an API call to OpenAI to get the response
+      const response = await getAssistantResponse(input);
+
+      // Add the assistant's response to the state
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: response, user: 'assistant' },
+      ]);
+
+      // Clear the input field
+      setInput('');
+    } catch (error) {
+      console.error('Error sending message to OpenAI:', error);
+    }
+  };
+
+  const getAssistantResponse = async (userMessage) => {
+    try {
+      const response = await fetch('/api/openai', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userMessage }),
       });
 
-      return response.choices[0].text;
+      const data = await response.json();
+
+      if (data && data.response) {
+        return data.response;
+      } else {
+        throw new Error('Invalid response from OpenAI');
+      }
     } catch (error) {
       console.error('OpenAI API error:', error);
       return 'An error occurred while fetching the response.';
     }
   };
-
 
   return (
     <div className="chat-app">
@@ -59,9 +70,6 @@ function ChatApp() {
               {message.text}
             </div>
           ))}
-          <div className="assistant-message">
-            <p>{result}</p>
-          </div>
         </div>
         <div className="chat-input">
           <input
