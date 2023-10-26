@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/professorai/professorai/static/css/main.9171e2c7.css",
+    "main.js": "/professorai/professorai/static/js/main.d4fe4425.js",
+    "index.html": "/professorai/professorai/index.html",
+    "main.9171e2c7.css.map": "/professorai/professorai/static/css/main.9171e2c7.css.map",
+    "main.d4fe4425.js.map": "/professorai/professorai/static/js/main.d4fe4425.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9171e2c7.css",
+    "static/js/main.d4fe4425.js"
+  ]
+}
