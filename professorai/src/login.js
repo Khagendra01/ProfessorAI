@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SignInPrompt.css'; // Import the CSS file for styling
+import './styles/SignInPrompt.css'; // Import the CSS file for styling
 
 function SignInPrompt() {
   const [username, setUsername] = useState('');

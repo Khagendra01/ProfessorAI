@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Quiz.css'; // Import the CSS file for styling
+import './styles/Quiz.css'; // Import the CSS file for styling
 
 function Quiz() {
   const [questions, setQuestions] = useState([
