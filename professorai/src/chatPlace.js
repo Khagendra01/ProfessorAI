@@ -1,21 +1,51 @@
-import React, { useState } from 'react';
-import './styles/ChatApp.css'; // Import the CSS file for styling
+import React, { useState, useEffect } from 'react';
+import './styles/ChatApp.css';
+import openai from 'openai'; // Import the OpenAI SDK
 
 function ChatApp() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [result, setResult] = useState('Assistant');
 
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
-  const [result, setResult] = useState('Assistant');
-
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (input.trim() === '') return;
+
+    // Add the user message to the state
     setMessages([...messages, { text: input, user: 'user' }]);
+
+    // Make an API call to OpenAI to get the response
+    const response = await getAssistantResponse(input);
+
+    // Add the assistant's response to the state
+    setMessages([...messages, { text: response, user: 'assistant' }]);
+
+    // Clear the input field
     setInput('');
   };
+
+  // Function to get a response from the OpenAI assistant
+  const getAssistantResponse = async (userMessage) => {
+    const apiKey = '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'; // Replace with your OpenAI API key
+    const openaiClient = new openai({ key: apiKey });
+
+    try {
+      const response = await openaiClient.completions.create({
+        engine: 'text-davinci-002',
+        prompt: `User: ${userMessage}\nAssistant:`,
+        max_tokens: 150, // You can adjust this as needed
+      });
+
+      return response.choices[0].text;
+    } catch (error) {
+      console.error('OpenAI API error:', error);
+      return 'An error occurred while fetching the response.';
+    }
+  };
+
 
   return (
     <div className="chat-app">
