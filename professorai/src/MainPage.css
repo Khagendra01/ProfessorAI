@@ -1,0 +1,33 @@
+.main-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .main-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .big-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .big-button:hover {
+    background-color: #0056b3;
+  }
+  

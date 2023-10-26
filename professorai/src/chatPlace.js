@@ -1,31 +1,5 @@
 import React, { useState } from 'react';
-
-import axios from 'axios';
-
-const apiKey = 'cbdc6d35b06840ba94e325df8cc00a63';
-const endpoint = 'https://professorai.cognitiveservices.azure.com/';
-
-const chatGPTRequest = async (inputText) => {
-  try {
-    const response = await axios.post(
-      `${endpoint}/YOUR_SPECIFIC_ENDPOINT`, // Replace with the actual endpoint
-      {
-        prompt: inputText,
-      },
-      {
-        headers: {
-          'Ocp-Apim-Subscription-Key': apiKey,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
+import './ChatApp.css'; // Import the CSS file for styling
 
 function ChatApp() {
   const [messages, setMessages] = useState([]);
@@ -35,13 +9,11 @@ function ChatApp() {
     setInput(e.target.value);
   };
 
-  const [result, setResult] = useState('aa');
+  const [result, setResult] = useState('Assistant');
 
   const handleSendMessage = () => {
     if (input.trim() === '') return;
-    console.log(chatGPTRequest({text: input}))
     setMessages([...messages, { text: input, user: 'user' }]);
-    //setMessages([...messages, "Hi, I am AI"]);
     setInput('');
   };
 
@@ -57,7 +29,9 @@ function ChatApp() {
               {message.text}
             </div>
           ))}
-          <h1>{result}</h1>
+          <div className="assistant-message">
+            <p>{result}</p>
+          </div>
         </div>
         <div className="chat-input">
           <input
