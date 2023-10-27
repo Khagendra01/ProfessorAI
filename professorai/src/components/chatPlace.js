@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import './styles/ChatApp.css';
+import '../styles/ChatApp.css';
+
+
+const { OpenAIClient, AzureKeyCredential } = require("@azure/openai");
+const endpoint = "" ;
+const azureApiKey = "" ;
+
+const prompt = ["When was Microsoft founded?"];
 
 function ChatApp() {
   const [messages, setMessages] = useState([]);
@@ -35,26 +42,20 @@ function ChatApp() {
     }
   };
 
-  const getAssistantResponse = async (userMessage) => {
+  const getAssistantResponse = async () => {
     try {
-      const response = await fetch('/api/openai', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userMessage }),
-      });
+      const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
+      const deploymentId = "gpt-35-turbo-instruct";
+      const result = await client.getCompletions(deploymentId, prompt);
 
-      const data = await response.json();
-
-      if (data && data.response) {
-        return data.response;
-      } else {
-        throw new Error('Invalid response from OpenAI');
+      for (const choice of result.choices) {
+        console.log(choice.text);
+        setMessages((prevMessages) =>[...prevMessages, choice.text]);
       }
+
     } catch (error) {
-      console.error('OpenAI API error:', error);
-      return 'An error occurred while fetching the response.';
+      console.error('Error getting assistant response from OpenAI:', error);
+      return 'An error occurred while communicating with the assistant.';
     }
   };
 

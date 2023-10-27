@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import SignInPrompt from './login';
-import MainPage from './mainPage';
-import ChatApp from './chatPlace';
-import Quiz from './quiz';
-import Feedback from './feedback';
+import SignInPrompt from './components/login';
+import MainPage from './components/mainPage';
+import ChatApp from './components/chatPlace';
+import Quiz from './components/quiz';
+import Feedback from './components/feedback';
 
 function App() {
   return (
