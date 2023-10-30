@@ -29,6 +29,12 @@
     cursor: pointer;
     transition: background-color 0.2s;
   }
+
+  .register-button {
+    margin-top: 1em;
+    padding: 5px 20px;
+    background-color: #687b8f;
+  }
   
   .sign-in-button:hover {
     background-color: #0056b3;

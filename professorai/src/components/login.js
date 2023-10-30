@@ -27,9 +27,14 @@ function SignInPrompt() {
       });
   };
 
+  const handleNavigation = (route) => {
+    navigate(route);
+  };
+
   return (
     <div className="sign-in-prompt-container">
-      <h2 className="sign-in-title">Sign In</h2>
+      <h1 className="sign-in-title">Sign In</h1>
+      <p>Username</p>
       <input
         type="text"
         className="username-input"
@@ -38,6 +43,7 @@ function SignInPrompt() {
         value={loginInfo.username}
         onChange={(e) => handleLoginInfoChange(e.target.name, e.target.value)}
       />
+      <p>Password</p>
       <input
         type="password"
         className="username-input"
@@ -50,6 +56,8 @@ function SignInPrompt() {
       <button onClick={handleSignIn} className="sign-in-button">
         Sign In
       </button>
+      <br></br>
+      <button className="register-button" onClick={() => handleNavigation("/register")}> create a new account</button>
     </div>
   );
 }
