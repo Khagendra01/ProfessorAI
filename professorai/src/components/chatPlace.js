@@ -1,88 +1,77 @@
-import React, { useState } from 'react';
-import '../styles/ChatApp.css';
-
-
-const { OpenAIClient, AzureKeyCredential } = require("@azure/openai");
-const endpoint = "" ;
-const azureApiKey = "" ;
-
-const prompt = ["When was Microsoft founded?"];
-
+import React, { useEffect, useState } from "react";
+import "../styles/ChatApp.css";
+import Navbar from "./navbar";
+import { sendMessage } from "../api/chatApi";
 function ChatApp() {
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const[sendState, setSendState] = React.useState(false);
+  const [input, setInput] = useState("");
+
+  useEffect(()=>{
+    console.log(messages);
+    if(sendState) send();
+  }, [sendState])
 
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
   const handleSendMessage = async () => {
-    if (input.trim() === '') return;
+    if (input.trim() === "") return;
 
     // Add the user message to the state
+
     setMessages((prevMessages) => [
       ...prevMessages,
-      { text: input, user: 'user' },
+      { role: "user", content: input },
     ]);
-
-    try {
-      // Make an API call to OpenAI to get the response
-      const response = await getAssistantResponse(input);
-
-      // Add the assistant's response to the state
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { text: response, user: 'assistant' },
-      ]);
-
-      // Clear the input field
-      setInput('');
-    } catch (error) {
-      console.error('Error sending message to OpenAI:', error);
-    }
+    setSendState(true);
   };
 
-  const getAssistantResponse = async () => {
+  const send = async() => {
     try {
-      const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
-      const deploymentId = "gpt-35-turbo-instruct";
-      const result = await client.getCompletions(deploymentId, prompt);
-
-      for (const choice of result.choices) {
-        console.log(choice.text);
-        setMessages((prevMessages) =>[...prevMessages, choice.text]);
-      }
-
+      // Get the assistant's response from Azure OpenAI
+       await sendMessage(messages).then((response)=>{
+        setSendState(false);
+        setMessages((prevMessages) => [...prevMessages, response]);
+        setInput("");
+       });
     } catch (error) {
-      console.error('Error getting assistant response from OpenAI:', error);
-      return 'An error occurred while communicating with the assistant.';
+      console.error("Error sending message to OpenAI:", error);
     }
-  };
+  }
 
   return (
-    <div className="chat-app">
-      <div className="chat-container">
-        <div className="chat-messages">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`message ${message.user === 'user' ? 'user' : 'assistant'}`}
-            >
-              {message.text}
+    <>
+      <div className="chat-main">
+        <Navbar />
+        <div className="chat-app">
+          <div className="chat-container">
+            <div className="chat-messages">
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className={`message ${
+                    message.role === "user" ? "user" : "assistant"
+                  }`}
+                >
+                  {message.content}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="chat-input">
-          <input
-            type="text"
-            placeholder="Type your message..."
-            value={input}
-            onChange={handleInput}
-          />
-          <button onClick={handleSendMessage}>Send</button>
+            <div className="chat-input">
+              <input
+                type="text"
+                placeholder="Type your message..."
+                value={input}
+                onChange={handleInput}
+              />
+              <button onClick={handleSendMessage}>Send</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

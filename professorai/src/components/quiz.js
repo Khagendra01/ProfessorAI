@@ -1,25 +1,32 @@
-import React, { useState } from 'react';
-import '../styles/Quiz.css'; // Import the CSS file for styling
+import React, { useState } from "react";
+import "../styles/Quiz.css"; // Import the CSS file for styling
+import Navbar from "./navbar";
 
 function Quiz() {
   const [questions, setQuestions] = useState([
     {
       id: 1,
-      questionText: 'What is the capital of France?',
-      options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-      correctAnswer: 'Paris',
+      questionText: "What is the capital of France?",
+      options: ["Berlin", "Madrid", "Paris", "Rome"],
+      correctAnswer: "Paris",
     },
     {
       id: 2,
-      questionText: 'Which planet is known as the Red Planet?',
-      options: ['Earth', 'Mars', 'Venus', 'Jupiter'],
-      correctAnswer: 'Mars',
+      questionText: "Which planet is known as the Red Planet?",
+      options: ["Earth", "Mars", "Venus", "Jupiter"],
+      correctAnswer: "Mars",
     },
     {
       id: 3,
-      questionText: 'What is 2 + 2?',
-      options: ['3', '4', '5', '6'],
-      correctAnswer: '4',
+      questionText: "What is 2 + 2?",
+      options: ["3", "4", "5", "6"],
+      correctAnswer: "4",
+    },
+    {
+      id: 4,
+      questionText: "What club/team is messi going to retire?",
+      options: ["fcb", "In Miami", "psg", "al hilal"],
+      correctAnswer: "al hilal",
     },
   ]);
 
@@ -40,27 +47,30 @@ function Quiz() {
   };
 
   return (
-    <div className="quiz-container">
-      {showResult ? (
-        <div className="quiz-result">
-          <h2>Quiz Results</h2>
-          <p>{`You scored ${score} out of ${questions.length}.`}</p>
-        </div>
-      ) : (
-        <div className="quiz-question">
-          <h2>{`Question ${currentQuestion + 1}`}</h2>
-          <p>{questions[currentQuestion].questionText}</p>
-          <ul>
-            {questions[currentQuestion].options.map((option, index) => (
-              <li key={index} onClick={() => handleAnswerClick(option)}>
-                {option}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+    <div className="quiz-main-container">
+      <Navbar />
+      <div className="quiz-container">
+        {showResult ? (
+          <div className="quiz-result">
+            <h2>Quiz Results</h2>
+            <p>{`You scored ${score} out of ${questions.length}.`}</p>
+          </div>
+        ) : (
+          <div className="quiz-question">
+            <h2>{`Question ${currentQuestion + 1}`}</h2>
+            <p>{questions[currentQuestion].questionText}</p>
+            <ul>
+              {questions[currentQuestion].options.map((option, index) => (
+                <li key={index} onClick={() => handleAnswerClick(option)}>
+                  {option}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
-  }  
+}
 
 export default Quiz;

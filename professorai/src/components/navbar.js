@@ -18,7 +18,11 @@ function Navbar(props) {
         </button>
         <div className="profile-icon">
           {/* You can place your profile icon or avatar here */}
-          <img src="/img/profile.jpg" alt="Profile" />
+          <img
+            src="/img/profile.jpg"
+            alt="Profile"
+            onClick={() => handleNavigation("/profile")}
+          />
         </div>
       </div>
     </>

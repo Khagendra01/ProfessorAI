@@ -25,6 +25,7 @@
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
+    cursor: pointer;
   }
   
   /* Profile icon image (adjust size as needed) */

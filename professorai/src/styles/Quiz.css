@@ -1,3 +1,10 @@
+.quiz-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .quiz-container {
     text-align: center;
     padding: 20px;

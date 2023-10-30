@@ -1,22 +1,36 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import SignInPrompt from './components/login';
-import MainPage from './components/mainPage';
-import ChatApp from './components/chatPlace';
-import Quiz from './components/quiz';
-import Feedback from './components/feedback';
+import React, { createContext, useEffect, useState } from "react";
+import RouteConfig from "./components/Routes";
+import { refreshLogin } from "./api/authApi";
+
+export const AuthContext = createContext();
 
 function App() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      getData(); // Set dataFetched to true after the initial data fetch
+    }
+  }, []); // Add dataFetched to the dependency array
+
+  const getData = async () => {
+    await refreshLogin()
+      .then((res) => {
+        setUser(res);
+        localStorage.setItem("accessToken", res.accessToken);
+      })
+      .catch((error) => {
+        setUser();
+        localStorage.removeItem("accessToken");
+      });
+  };
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SignInPrompt />} />
-        <Route path="/mainPage" element={<MainPage />} />
-        <Route path="/chatPlace" element={<ChatApp />} />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/feedback" element={<Feedback />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <AuthContext.Provider value={{ user, setUser }}>
+        <RouteConfig />
+      </AuthContext.Provider>
+    </>
   );
 }
 
