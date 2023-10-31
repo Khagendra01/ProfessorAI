@@ -6,6 +6,10 @@ import "../styles/navbar.css"; // Import the CSS file for styling
 function Navbar(props) {
   const navigate = useNavigate();
 
+  const logOut = () =>{
+    
+  } 
+
   const handleNavigation = (route) => {
     navigate(route);
   };
@@ -22,8 +26,9 @@ function Navbar(props) {
             src="/img/profile.jpg"
             alt="Profile"
             onClick={() => handleNavigation("/profile")}
-          />
+          />       
         </div>
+        <button onClick={() => logOut()} > Log out </button>
       </div>
     </>
   );

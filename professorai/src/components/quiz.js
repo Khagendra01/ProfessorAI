@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Quiz.css"; // Import the CSS file for styling
 import Navbar from "./navbar";
+
+import { sendMessage } from "../api/chatApi";
 
 function Quiz() {
   const [questions, setQuestions] = useState([
@@ -29,6 +31,26 @@ function Quiz() {
       correctAnswer: "al hilal",
     },
   ]);
+
+  var message = [ {role: "user", content: "Generate 10 multiple-choice questions on the topic of calculus with 4 options and indicate the correct answer." }]
+
+  const[sendState, setSendState] = React.useState(false);
+
+  useEffect(()=>{
+    if(sendState) send();
+  }, [sendState])
+
+  const send = async() => {
+    try {
+      // Get the assistant's response from Azure OpenAI
+       await sendMessage(message).then((response)=>{
+        setSendState(false);
+        setQuestions((prevQuestions) => [...prevQuestions, response]);
+       });
+    } catch (error) {
+      console.error("Error", error);
+    }
+  }
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
