@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/profile.css';
 import Navbar from './navbar';
+import { AuthContext } from '../App';
+
+
+
 
 function Profile() {
+  const { user } = useContext(AuthContext);
   const userProfile = {
-    username: 'Kgen',
+    username: user,
     points: 500,
     level: 5,
   };
