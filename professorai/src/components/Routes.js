@@ -21,6 +21,7 @@ const RouteConfig= () => {
           <Route path="/feedback" element={user ? <Feedback /> : <Navigate to='/' />} />
           <Route path="/profile" element={user ? <Profile /> : <Navigate to='/' />} />
           <Route path="/register" element={!user ? <RegisterPrompt /> : <Navigate to='/' />} />
+          <Route path="/login" element={!user ? <SignInPrompt /> : <Navigate to='/' />} />
         </Routes>
       </BrowserRouter>
     );

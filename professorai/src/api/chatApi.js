@@ -22,4 +22,4 @@ function sendQuiz(messages) {
     });
 }
 
-export { sendMessage };
+export { sendMessage, sendQuiz };

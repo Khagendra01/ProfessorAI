@@ -13,6 +13,11 @@ function RegisterPrompt() {
     setregisterInfo({ ...registerInfo, [name]: value });
   };
 
+  const handleNavigation = (route) => {
+    alert("tungu tungu, login tanana");
+    navigate(route);
+  };
+
   const handleSignIn = async () => {
     await register(registerInfo)
       .then((res) => {
@@ -69,7 +74,9 @@ function RegisterPrompt() {
 
       <button onClick={handleSignIn} className="sign-in-button">
         Register
-      </button>
+      </button><br></br>
+      <button className="register-button" onClick={() => handleNavigation("/login")}> Already a user?, Log In</button>
+
     </div>
   );
 }
