@@ -10,7 +10,7 @@ export const Loader = () =>{
   )
 }
 function ChatApp() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([ {role: "assistant", content: "Hi, How can I help you today?"} ]);
   const[sendState, setSendState] = React.useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = React.useState(false);
@@ -62,14 +62,17 @@ function ChatApp() {
           <div className="chat-container">
             <div className="chat-messages">
               {messages.map((message, index) => (
+                <>
+                {message.role}:
                 <div
                   key={index}
                   className={`message ${
                     message.role === "user" ? "user" : "assistant"
                   }`}
                 >
-                  {message.content}
+                   {message.content}
                 </div>
+                </>
               ))}
               {isSending && <Loader/>}
             </div>

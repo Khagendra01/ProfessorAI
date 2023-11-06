@@ -11,12 +11,6 @@
   font-family: Arial, sans-serif;
 }
 
-/* Navbar Styling (if needed) */
-.navbar {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px;
-}
 
 .chat-app {
   padding-top: 5em;
@@ -48,13 +42,13 @@
 }
 
 .user {
-  background-color: #19d839;
+  background-color: #007acc;
   color: #fff;
   align-self: flex-end;
 }
 
 .assistant {
-  background-color: #622ef3;
+  background-color: #8b3fd4;
   color: #fff;
 }
 

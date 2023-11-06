@@ -14,16 +14,36 @@
 }
 
 
-/* Button styling (your existing styles for buttons) */
+.main-page {
+  padding: 20px;
+}
+
+.main-title {
+  color: #001f3f; 
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
 .big-button {
-  background-color: #0074cc;
-  color: #fff;
+  background-color: #FFD700;
+  color: #3D2B1F;
   padding: 10px 20px;
   font-size: 16px;
   margin: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Additional styles as needed */
+
+.big-button:hover {
+  background-color: #FFA500; 
+}
