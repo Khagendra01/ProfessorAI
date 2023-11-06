@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import RouteConfig from "./components/Routes";
+import RouteConfig from "./routes/Routes";
 import { refreshLogin } from "./api/authApi";
 
 export const AuthContext = createContext();
@@ -27,8 +27,8 @@ function App() {
   };
   return (
     <>
-      <AuthContext.Provider value={{ user, setUser }}>
-        <RouteConfig />
+      <AuthContext.Provider value={{ user, setUser }}>           
+        <RouteConfig />        
       </AuthContext.Provider>
     </>
   );

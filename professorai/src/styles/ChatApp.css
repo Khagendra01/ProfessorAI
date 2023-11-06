@@ -68,12 +68,12 @@
 .chat-input {
   display: flex;
   align-items: center;
-  width: 100%;
   padding: 10px;
+  gap: 10px;
 }
 
 /* Input Field Styling */
-input[type="text"] {
+input[type="text"] input[type="email"] input[type="password"] {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
@@ -83,7 +83,7 @@ input[type="text"] {
 }
 
 /* Send Button Styling */
-button {
+.send-btn button {
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
@@ -93,6 +93,6 @@ button {
   transition: background-color 0.2s;
 }
 
-button:hover {
+.send-btn button:hover {
   background-color: #0056b3;
 }

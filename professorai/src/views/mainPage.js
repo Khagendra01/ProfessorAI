@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Navbar from "./navbar";
+import Navbar from '../components/navbar';
+
 
 import "../styles/MainPage.css"; // Import the CSS file for styling
 import { AuthContext } from "../App";

@@ -1,9 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Feedback.css"; // Import the CSS file for styling
+import Navbar from '../components/navbar';
+
 
 function Feedback() {
+
+  const navigate = useNavigate();
+
+  const handleNavigation = (route) => {
+    navigate(route);
+  };
+
+
   return (
     <div className="feed-main">
+      <Navbar />
       <div className="feedback-container">
         <h1 className="feedback-title">Feedback</h1>
         <p className="feedback-description">
@@ -15,7 +27,7 @@ function Feedback() {
               Your Feedback:
             </label>
           </div>
-          <button type="submit" className="submit-button">
+          <button onClick={() => handleNavigation("/quiz")} className="submit-button">
             Practice now
           </button>
         </form>

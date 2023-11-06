@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "../styles/ChatApp.css";
-import Navbar from "./navbar";
+import Navbar from '../components/navbar';
 import { sendMessage } from "../api/chatApi";
+import Load from '../assets/loader.gif';
+
+export const Loader = () =>{
+  return (
+    <img src = {Load} alt = "loader"/>
+  )
+}
 function ChatApp() {
   const [messages, setMessages] = useState([]);
   const[sendState, setSendState] = React.useState(false);
   const [input, setInput] = useState("");
+  const [isSending, setIsSending] = React.useState(false);
 
   useEffect(()=>{
-    console.log(messages);
-    if(sendState) send();
+    if(sendState) {
+      send();
+    }
   }, [sendState])
 
   const handleInput = (e) => {
@@ -29,14 +38,18 @@ function ChatApp() {
   };
 
   const send = async() => {
+    setIsSending(true);
     try {
       // Get the assistant's response from Azure OpenAI
        await sendMessage(messages).then((response)=>{
         setSendState(false);
-        setMessages((prevMessages) => [...prevMessages, response]);
+        setTimeout(()=>{setMessages((prevMessages) => [...prevMessages, response]);
         setInput("");
-       });
+        setIsSending(false);},2000);
+       })
     } catch (error) {
+      setSendState(false);
+      setIsSending(false);
       console.error("Error sending message to OpenAI:", error);
     }
   }
@@ -58,6 +71,7 @@ function ChatApp() {
                   {message.content}
                 </div>
               ))}
+              {isSending && <Loader/>}
             </div>
             <div className="chat-input">
               <input
@@ -66,7 +80,11 @@ function ChatApp() {
                 value={input}
                 onChange={handleInput}
               />
+              <div className="send-btn" >
               <button onClick={handleSendMessage}>Send</button>
+              
+              </div>
+              
             </div>
           </div>
         </div>

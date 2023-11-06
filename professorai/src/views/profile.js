@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../styles/profile.css';
-import Navbar from './navbar';
+import Navbar from '../components/navbar';
 import { AuthContext } from '../App';
 
 
@@ -9,17 +9,18 @@ import { AuthContext } from '../App';
 function Profile() {
   const { user } = useContext(AuthContext);
   const userProfile = {
-    username: user,
+    username: user.firstName + " " + user.lastName ,
     points: 500,
     level: 5,
   };
 
   return (
     <>
-    <Navbar />
+    <div className='profile-main'>
+      <Navbar/>
     <div className="profile-container">       
       <div className="profile-header">
-        <h1>Welcome, {userProfile.username}!</h1>
+        <h1>Welcome, {userProfile.username}</h1>
       </div>
       <div className="profile-dashboard">
         <div className="dashboard-item">
@@ -31,6 +32,7 @@ function Profile() {
           <p>{userProfile.level}</p>
         </div>
       </div>
+    </div>
     </div>
     </>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Quiz.css"; // Import the CSS file for styling
-import Navbar from "./navbar";
+import Navbar from '../components/navbar';
+
 
 import { sendMessage } from "../api/chatApi";
 

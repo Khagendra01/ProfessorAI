@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import SignInPrompt from './login';
-import MainPage from './mainPage';
-import ChatApp from './chatPlace';
-import Quiz from './quiz';
-import Feedback from './feedback';
-import Profile from './profile';
+import SignInPrompt from '../components/login';
+import MainPage from '../views/mainPage';
+import ChatApp from '../views/chatPlace';
+import Quiz from '../views/quiz';
+import Feedback from '../views/feedback';
+import Profile from '../views/profile';
 import { AuthContext } from '../App';
-import RegisterPrompt from './Register';
+import RegisterPrompt from '../components/Register';
 
 const RouteConfig= () => {
     const { user } = useContext(AuthContext);

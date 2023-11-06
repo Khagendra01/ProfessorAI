@@ -1,0 +1,85 @@
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .registration-form {
+    background-color: #fff;
+    padding: 20px 40px 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .registration-form h2 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .register-btn button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .register-btn button:hover {
+    background-color: #0056b3;
+  }
+
+  .sign-in-button button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-left: 10px;
+    width: 100%;;
+  }
+  .register-button button {
+    margin-top: 1em;
+    padding: 5px 20px;
+    background-color: #687b8f;
+    margin-left: 10px;
+    width: 100%;
+    color: #fff
+  }
+
+  .sign-in-title{
+    margin: 1%;
+  }
+  
