@@ -31,13 +31,7 @@ function MainPage() {
           <button onClick={() => handleNavigation("/noteMenu")} className="big-button">
             Take a Note
           </button>
-          <button onClick={() => handleNavigation("/")} className="big-button">
-            Learn Something New
-          </button>
-          <button onClick={() => handleNavigation("/")} className="big-button">
-            Improve self
-          </button>
-          <button onClick={() => handleNavigation("/")} className="big-button">
+          <button onClick={() => handleNavigation("/examPrep")} className="big-button">
             Prepare for the exam
           </button>
           <button onClick={() => handleNavigation("/quiz")} className="big-button">
@@ -45,6 +39,12 @@ function MainPage() {
           </button>
           <button onClick={() => handleNavigation("/feedback")} className="big-button">
             Get Your Feedback
+          </button>
+          <button onClick={() => handleNavigation("/")} className="big-button">
+            Learn Something New
+          </button>
+          <button onClick={() => handleNavigation("/")} className="big-button">
+            Improve self
           </button>
         </div>
       </div>

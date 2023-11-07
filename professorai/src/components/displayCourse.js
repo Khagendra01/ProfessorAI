@@ -1,5 +1,7 @@
 import React from 'react';
 
+import "../styles/displayCourse.css";
+
 const courseData = [
     {
       id: 1,
@@ -24,8 +26,7 @@ function DisplayCourse(props) {
       );
 
     return (
-        <>
-        
+        <>      
         <div className="course-list">
         {courseData.map((course) => (
           <CourseCard key={course.id} course={course} />

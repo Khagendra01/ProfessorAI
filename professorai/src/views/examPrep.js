@@ -1,18 +1,18 @@
 import React from 'react';
-import '../styles/noteMenu.css';
+import '../styles/exam.css';
 import Navbar from '../components/navbar';
 import DisplayCourse from '../components/displayCourse';
 
 
-function Note() {
+function ExamPrep() {
 
   return (
-    <div className='note-main'>
+    <div className='exam-main'>
       <Navbar />
-      <p>note menu</p>
+      <p>exam prep</p>
     <DisplayCourse />
     </div>
   );
 }
 
-export default Note;
+export default ExamPrep;

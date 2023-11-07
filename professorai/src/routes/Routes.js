@@ -9,6 +9,7 @@ import Profile from '../views/profile';
 import { AuthContext } from '../App';
 import RegisterPrompt from '../components/Register';
 import NoteMenu from '../views/noteMenu';
+import ExamPrep from '../views/examPrep';
 
 const RouteConfig= () => {
     const { user } = useContext(AuthContext);
@@ -24,6 +25,7 @@ const RouteConfig= () => {
           <Route path="/register" element={!user ? <RegisterPrompt /> : <Navigate to='/' />} />
           <Route path="/login" element={!user ? <SignInPrompt /> : <Navigate to='/' />} />
           <Route path="/noteMenu" element={user ? <NoteMenu /> : <Navigate to='/' />} />
+          <Route path="/examPrep" element={user ? <ExamPrep /> : <Navigate to='/' />} />
         </Routes>
       </BrowserRouter>
     );
