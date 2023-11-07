@@ -4,6 +4,7 @@ import SignInPrompt from '../components/login';
 import MainPage from '../views/mainPage';
 import ChatApp from '../views/chatPlace';
 import Quiz from '../views/quiz';
+import QuizMenu from '../views/quizMenu';
 import Feedback from '../views/feedback';
 import Profile from '../views/profile';
 import { AuthContext } from '../App';
@@ -20,6 +21,7 @@ const RouteConfig= () => {
           <Route path="/mainPage" element={user ? <MainPage /> : <Navigate to='/'/> } />
           <Route path="/chatPlace" element={user ? <ChatApp /> : <Navigate to='/' />} />
           <Route path="/quiz" element={user ? <Quiz /> : <Navigate to='/' />} />
+          <Route path="/quizMenu" element={user ? <QuizMenu /> : <Navigate to='/' />} />
           <Route path="/feedback" element={user ? <Feedback /> : <Navigate to='/' />} />
           <Route path="/profile" element={user ? <Profile /> : <Navigate to='/' />} />
           <Route path="/register" element={!user ? <RegisterPrompt /> : <Navigate to='/' />} />
