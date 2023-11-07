@@ -28,7 +28,7 @@ function MainPage() {
           <button onClick={() => handleNavigation("/chatPlace")} className="big-button">
             Talk to my AI
           </button>
-          <button onClick={() => handleNavigation("/Take a Note")} className="big-button">
+          <button onClick={() => handleNavigation("/noteMenu")} className="big-button">
             Take a Note
           </button>
           <button onClick={() => handleNavigation("/")} className="big-button">
