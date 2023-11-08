@@ -47,11 +47,12 @@ function Note() {
       <div className="note-form">
         <input
           type="text"
+          className="note-input"
           placeholder="Enter your note..."
           value={noteInput}
           onChange={(e) => setNoteInput(e.target.value)}
         />
-        <button onClick={addNote}>Add Note</button>
+        <button className="note-submit" onClick={addNote}>Add Note</button>
       </div>
       <div className="note-list">
         {notes.map((note, index) => (

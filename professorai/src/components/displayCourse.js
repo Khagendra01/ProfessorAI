@@ -5,8 +5,8 @@ import "../styles/displayCourse.css";
 const courseData = [
     {
       id: 1,
-      title: 'Physics',
-      description: 'Introduction to Physics',
+      title: 'General',
+      description: 'Note',
     },
     {
       id: 2,
