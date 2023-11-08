@@ -1,0 +1,116 @@
+.quizInterface {
+    width: 40%;
+    height: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+.quizContainer {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.question-area {
+    background-color: white;
+}
+
+.options-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+    .options-area button {
+        padding: 5px;
+        height: 35px;
+    }
+
+.generateButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+    .generateButtonContainer button {
+        padding: 5px;
+        background-color: rgb(125, 177, 198);
+        border-radius: 5px;
+        font-size: 17px;
+    }
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+    .categories button {
+        flex: 1;
+        margin: 0 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        padding: 6px;
+    }
+
+.topicInput {
+    display: flex;
+    margin-top: 20px;
+    align-self: center;
+}
+
+    .topicInput input {
+        flex: 1;
+        flex-wrap: wrap;
+        padding: 5px;
+        margin-right: 10px;
+    }
+
+    .topicInput button {
+        padding: 5px 15px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.errorMessageHolder {
+    height: 30px;
+}
+
+.error-message {
+    align-self: center;
+    color: red;
+}
+
+@media (max-width: 600px) {
+    /* Apply styles for screens with a maximum width of 600px (adjust as needed) */
+    .quizInterface {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .categories,
+    .topicInput {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+        .topicInput input {
+            width: 70%;
+        }
+
+        .topicInput button {
+            width: 30%;
+        }
+}
