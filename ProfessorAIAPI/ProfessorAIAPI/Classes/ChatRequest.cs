@@ -32,7 +32,7 @@ namespace Temp.Models
 
     public class UserTopicModel
     {
-        public string userTopic { get; set; }
+        public string? userTopic { get; set; }
     }
 
     public class ValidationModel

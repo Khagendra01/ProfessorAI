@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Text;
-using Microsoft.Azure.Cosmos;
 using System.Text.RegularExpressions;
 
 namespace Temp.Controllers
