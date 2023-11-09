@@ -14,7 +14,7 @@ type "npm start"<br>
 
 
 for the backend part
-type 
+it is integrated in c# 
 
 <br><br><br>
 Git and node are assumed to be installed on your workstation
