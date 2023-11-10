@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import SignInPrompt from '../components/login';
 import MainPage from '../views/mainPage';
 import ChatApp from '../views/chatPlace';
-import Quiz from '../views/quiz';
+//import Quiz from '../views/quiz';
 import QuizMenu from '../views/quizMenu';
 import Feedback from '../views/feedback';
 import Profile from '../views/profile';
