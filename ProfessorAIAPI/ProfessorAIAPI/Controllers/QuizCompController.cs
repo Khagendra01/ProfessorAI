@@ -119,6 +119,7 @@ namespace Temp.Controllers
             }
         }
 
+        // Extracts json part from the response.
         private string extractJsonFromMessage(string responseMessage)
         {
             // Regualr expression matching to extract the json part of the response message.

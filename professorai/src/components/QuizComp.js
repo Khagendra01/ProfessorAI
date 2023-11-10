@@ -246,7 +246,7 @@ const QuizComp = () => {
                     placeholder="Enter a new topic"
                     value={newTopic}
                     onChange={handleTopicInputChange}
-                    onKeyUp={handleInputKeyPress}   // Handle Enter Key press
+                    onKeyUp={handleInputKeyPress}     // Handle Enter Key press
                 />
                 <button disabled={isLoading} onClick={setTopicCheck}>Set</button>
             </div>
