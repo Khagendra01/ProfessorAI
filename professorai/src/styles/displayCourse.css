@@ -6,6 +6,12 @@
     margin: 10px;
     border-radius: 5px;
     box-shadow: 2px 2px 5px #888;
+    transition: background-color 0.1s ease-in-out;
+    cursor: pointer;
+  }
+
+  .course-card:hover {
+    background-color: #FFD700; /* Change to your desired hover color */
   }
   
   .course-list {
