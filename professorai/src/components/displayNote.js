@@ -7,13 +7,13 @@ import {  useNavigate } from "react-router-dom";
 const notesList = [
   {
     id: 1,
-    sender: "John Doe",
-    body: "Hi there, this is a sample note body text.",
+    title: "John Doe",
+    date: "Date",
   },
   {
     id: 2,
-    sender: "Jane Smith",
-    body: "Don't forget our meeting tomorrow at 10 AM.",
+    title: "Jane Smith",
+    date: "Don't forget our meeting tomorrow at 10 AM.",
   },
   // Add more note objects as needed
 ];
@@ -32,8 +32,15 @@ function DisplayNote(props) {
     }
   };
 
-  const DisplayInput = () => (
+  return (
     <>
+    <h1>note list</h1>
+      { display ? notesList.map((note) => (
+        <div onClick={() => { setDisplay(false)}} key={note.id} className="note-item">
+          <div className="note-title">{note.title}</div>
+          <div className="note-date">{note.date}</div>
+        </div>
+      )) :     <>
       <div className="note-form">
         <input
           type="text"
@@ -53,17 +60,7 @@ function DisplayNote(props) {
           </div>
         ))}
       </div>
-    </>
-  );
-  return (
-    <>
-    
-      { display ? notesList.map((note) => (
-        <div onClick={() => { setDisplay(false)}} key={note.id} className="note-item">
-          <div className="note-sender">{note.sender}</div>
-          <div className="note-body">{note.body}</div>
-        </div>
-      )) : <DisplayInput /> }
+    </> }
 
     </>
   );

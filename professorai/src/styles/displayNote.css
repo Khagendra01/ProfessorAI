@@ -10,15 +10,15 @@
 }
 
 .note-item:hover{
-    background-color: #001f3f;
+    background-color: #FFA500; 
     color: #fff;
 }
 
-.note-sender {
+.note-title {
   font-weight: bold;
 }
 
-.note-body {
+.note-date {
   margin-top: 5px;
   color: #666;
 }

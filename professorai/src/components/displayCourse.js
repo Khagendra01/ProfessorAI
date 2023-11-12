@@ -17,26 +17,21 @@ const courseData = [
   // Add more courses as needed
 ];
 
-
 function DisplayCourse(props) {
   //const navigate = useNavigate();
 
   const courseClicked = () => {
     props.onCourseClicked();
-  }
-
-  const CourseCard = ({ course }) => (
-    <div onClick={() => courseClicked()} className="course-card">
-      <h2>{course.title}</h2>
-      <p>{course.description}</p>
-    </div>
-  );
+  };
 
   return (
     <>
       <div className="course-list">
         {courseData.map((course) => (
-          <CourseCard key={course.id} course={course} />
+          <div onClick={() => courseClicked()} className="course-card">
+            <h2>{course.title}</h2>
+            <p>{course.description}</p>
+          </div>
         ))}
       </div>
     </>
