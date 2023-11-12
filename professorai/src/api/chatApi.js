@@ -11,9 +11,9 @@ function sendMessage(messages) {
     });
 }
 
-function sendQuiz(messages) {
+function sendQuiz(quizQuerry) {
   return instance
-    .post("/api/chat/send", messages)
+    .post("/api/quiz/getQuiz", quizQuerry)
     .then((response) => {
       return response;
     })

@@ -2,6 +2,7 @@ import { React, useState } from "react";
 
 import "../styles/displayNote.css";
 import {  useNavigate } from "react-router-dom";
+import DrawExp from "./draw";
 
 //list of the note recorder by manxe
 const notesList = [
@@ -53,13 +54,7 @@ function DisplayNote(props) {
           Add Note
         </button>
       </div>
-      <div className="note-list">
-        {notes.map((note, index) => (
-          <div key={index} className="note">
-            {note}
-          </div>
-        ))}
-      </div>
+      <DrawExp />
     </> }
 
     </>

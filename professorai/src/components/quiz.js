@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Quiz.css"; // Import the CSS file for styling
-import Navbar from '../components/navbar';
 
-import { sendMessage } from "../api/chatApi";
+import { sendQuiz } from "../api/chatApi";
 
 function Quiz() {
   const [questions, setQuestions] = useState([
@@ -32,25 +31,23 @@ function Quiz() {
     },
   ]);
 
-  var message = [ {role: "user", content: "Generate 10 multiple-choice questions on the topic of calculus with 4 options and indicate the correct answer." }]
+  var quizQuerry = [ {role: "user", content: "Generate 10 multiple-choice questions on the topic of calculus with 4 options and indicate the correct answer." }]
 
-  const[sendState, setSendState] = React.useState(false);
 
-  useEffect(()=>{
-    if(sendState) send();
-  }, [sendState])
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await sendQuiz(quizQuerry);
+        setQuestions(response);
+        console.log(response);
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+  
+    fetchQuestions(); // Fetch questions when the component mounts
+  }, []); 
 
-  const send = async() => {
-    try {
-      // Get the assistant's response from Azure OpenAI
-       await sendMessage(message).then((response)=>{
-        setSendState(false);
-        setQuestions((prevQuestions) => [...prevQuestions, response]);
-       });
-    } catch (error) {
-      console.error("Error", error);
-    }
-  }
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -69,8 +66,6 @@ function Quiz() {
   };
 
   return (
-    <div className="quiz-main-container">
-      <Navbar />
       <div className="quiz-container">
         {showResult ? (
           <div className="quiz-result">
@@ -91,7 +86,6 @@ function Quiz() {
           </div>
         )}
       </div>
-    </div>
   );
 }
 
