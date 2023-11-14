@@ -4,32 +4,9 @@ import "../styles/Quiz.css"; // Import the CSS file for styling
 import { sendQuiz } from "../api/chatApi";
 
 function Quiz() {
-  const [questions, setQuestions] = useState([
-    {
-      id: 1,
-      questionText: "What is the capital of France?",
-      options: ["Berlin", "Madrid", "Paris", "Rome"],
-      correctAnswer: "Paris",
-    },
-    {
-      id: 2,
-      questionText: "Which planet is known as the Red Planet?",
-      options: ["Earth", "Mars", "Venus", "Jupiter"],
-      correctAnswer: "Mars",
-    },
-    {
-      id: 3,
-      questionText: "What is 2 + 2?",
-      options: ["3", "4", "5", "6"],
-      correctAnswer: "4",
-    },
-    {
-      id: 4,
-      questionText: "What club/team is messi going to retire?",
-      options: ["fcb", "In Miami", "psg", "al hilal"],
-      correctAnswer: "al hilal",
-    },
-  ]);
+  const [questions, setQuestions] = useState([]);
+
+  const [loading, setLoading] = useState(true);
 
   var quizQuerry = [ {role: "user", content: "Generate 10 multiple-choice questions on the topic of calculus with 4 options and indicate the correct answer." }]
 
@@ -40,13 +17,14 @@ function Quiz() {
         const response = await sendQuiz(quizQuerry);
         setQuestions(response);
         console.log(response);
+        setLoading(false);
       } catch (error) {
         console.error("Error", error);
       }
     };
   
     fetchQuestions(); // Fetch questions when the component mounts
-  }, []); 
+  }, [loading]); 
 
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -67,12 +45,15 @@ function Quiz() {
 
   return (
       <div className="quiz-container">
+        
+        { loading && <p>loading...</p> }
+
         {showResult ? (
           <div className="quiz-result">
             <h2>Quiz Results</h2>
             <p>{`You scored ${score} out of ${questions.length}.`}</p>
           </div>
-        ) : (
+        ) :   !loading && ( 
           <div className="quiz-question">
             <h2>{`Question ${currentQuestion + 1}`}</h2>
             <p>{questions[currentQuestion].questionText}</p>

@@ -10,7 +10,7 @@ export const Loader = () =>{
   )
 }
 function ChatApp() {
-  const [messages, setMessages] = useState([ ]);
+  const [messages, setMessages] = useState([ { role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI" } ]);
   const[sendState, setSendState] = React.useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = React.useState(false);
