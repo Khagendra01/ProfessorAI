@@ -3,9 +3,15 @@ import { React, useState } from "react";
 import "../styles/displayNote.css";
 import {  useNavigate } from "react-router-dom";
 import DrawExp from "./draw";
+import { TinyMCEEditor } from "tinymce";
 
 //list of the note recorder by manxe
 const notesList = [
+  {
+    id: 0,
+    title: "Add a new note",
+    date: "+",
+  },
   {
     id: 1,
     title: "John Doe",
@@ -24,7 +30,7 @@ function DisplayNote(props) {
   const [noteInput, setNoteInput] = useState("");
   const [display, setDisplay] = useState(true);
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const addNote = () => {
     if (noteInput.trim() !== "") {
@@ -32,6 +38,12 @@ function DisplayNote(props) {
       setNoteInput("");
     }
   };
+  const [content, setContent] = useState('');
+
+  const handleEditorChange = (newContent) => {
+    setContent(newContent);
+  };
+
 
   return (
     <>
@@ -42,6 +54,8 @@ function DisplayNote(props) {
           <div className="note-date">{note.date}</div>
         </div>
       )) :     <>
+      
+
       <div className="note-form">
         <input
           type="text"
