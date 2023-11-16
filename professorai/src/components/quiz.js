@@ -4,7 +4,7 @@ import "../styles/Quiz.css"; // Import the CSS file for styling
 import { sendQuiz } from "../api/chatApi";
 
 function Quiz() {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([{id: 0, questionText: "Question", options: ["a", "b", "c", "d"], correctAnswer: "Amswer"}]);
 
   const [loading, setLoading] = useState(true);
 
@@ -45,7 +45,6 @@ function Quiz() {
 
   return (
       <div className="quiz-container">
-        
         { loading && <p>loading...</p> }
 
         {showResult ? (
