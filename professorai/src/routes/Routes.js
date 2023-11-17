@@ -13,6 +13,7 @@ import NoteMenu from '../views/noteMenu';
 import ExamPrep from '../views/examPrep';
 import QuizComp from '../components/QuizComp';
 import Explore from '../views/explore';
+import Try from '../views/try';
 
 const RouteConfig= () => {
     const { user } = useContext(AuthContext);
@@ -31,6 +32,7 @@ const RouteConfig= () => {
           <Route path="/noteMenu" element={user ? <NoteMenu /> : <Navigate to='/' />} />
           <Route path="/examPrep" element={user ? <ExamPrep /> : <Navigate to='/' />} />
           <Route path="/explore" element={<Explore /> } />
+          <Route path="/try" element={<Try /> } />
         </Routes>
       </BrowserRouter>
     );
