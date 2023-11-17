@@ -43,9 +43,6 @@ function MainPage() {
         <button onClick={() => handleNavigation("/")} className="big-button">
           Learn Something New
         </button>
-        <button onClick={() => handleNavigation("/")} className="big-button">
-          Improve self
-        </button>
       </div>
     </div>
   </div>

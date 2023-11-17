@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'; // Assuming you're using React R
 
 function Navbar() {
   const navigate = useNavigate();
-  const { setUser } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -52,6 +52,8 @@ function Navbar() {
         onClick={() => handleNavigation("/")}
         style={{ marginLeft: '10%', cursor: 'pointer' }}
       />
+      { user ?
+      <>
       <div className="profile-icon" ref={dropdownRef}>
         {/* You can place your profile icon or avatar here */}
         <img
@@ -69,6 +71,10 @@ function Navbar() {
           </div>
         )}
       </div>
+      </> 
+      :
+        <button onClick={() => {}} className="nav-login">Log In</button>    
+      }
     </div>
   );
 }
