@@ -32,52 +32,51 @@ function SignInPrompt() {
     }
   };
 
-
   return (
     <div className="App">
       <div className="registration-form">
-      {text && <p>{text}</p>}
+        {text && <p>{text}</p>}
         <h1 className="sign-in-title">Sign In</h1>
         <div className="form-group">
-            <label htmlFor="firstName">Username</label>
-            <input
-              type="text"
-              className="username-input"
-              placeholder="Enter your username"
-              name="username"
-              value={loginInfo.username}
-              onChange={(e) => handleLoginInfoChange(e.target.name, e.target.value)}
-            />
+          <label htmlFor="firstName">Username</label>
+          <input
+            type="text"
+            className="username-input"
+            placeholder="Enter your username"
+            name="username"
+            value={loginInfo.username}
+            onChange={(e) =>
+              handleLoginInfoChange(e.target.name, e.target.value)
+            }
+          />
         </div>
         <div className="form-group">
-            <label htmlFor="firstName">Password</label>
-            <input
-              type="password"
-              className="username-input"
-              placeholder="Enter your password"
-              name="password"
-              value={loginInfo.password}
-              onChange={(e) => handleLoginInfoChange(e.target.name, e.target.value)}
-            />
+          <label htmlFor="firstName">Password</label>
+          <input
+            type="password"
+            className="username-input"
+            placeholder="Enter your password"
+            name="password"
+            value={loginInfo.password}
+            onChange={(e) =>
+              handleLoginInfoChange(e.target.name, e.target.value)
+            }
+          />
         </div>
         <div className="sign-in-button">
-        <button onClick={handleSignIn}>
-          {loading ? (
-            <i className="fa fa-spinner fa-spin" /> // Use a rotating loading icon
-          ) : (
-            "Sign In"
-          )}
-        </button>
+          <button onClick={handleSignIn}>
+            {loading ? (
+              <i className="fa fa-spinner fa-spin" /> // Use a rotating loading icon
+            ) : (
+              "Sign In"
+            )}
+          </button>
         </div>
         <div className="register-button">
-                  <button
-          
-          onClick={() => navigate("/register")}
-        >
-          create a new account
-        </button>
+          <button onClick={() => navigate("/register")}>
+            Create a new account
+          </button>
         </div>
-
       </div>
     </div>
   );

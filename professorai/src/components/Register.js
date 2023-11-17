@@ -157,6 +157,9 @@ const  Register = () => {
         <div className='register-btn'>
         <button onClick = {handleRegister}>Register</button>
         </div>
+        <div className="register-button">
+        <button onClick={() => navigate("/login")} > Already a user?, Log in</button>
+      </div>
       </div>
     </div>
   );

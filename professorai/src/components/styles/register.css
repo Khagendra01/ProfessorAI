@@ -45,7 +45,7 @@
   .register-btn button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #001f3f;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -55,13 +55,13 @@
   }
   
   .register-btn button:hover {
-    background-color: #0056b3;
+    background-color: #b30000;
   }
 
   .sign-in-button button {
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #007bff;
+    background-color: #001f3f;
     
     border: none;
     border-radius: 5px;
@@ -69,14 +69,21 @@
     transition: background-color 0.2s;
     margin-left: 10px;
     width: 100%;;
+    color: #fff;
   }
+
+  .sign-in-button button:hover {
+    background-color: #b30000;
+  }
+  
   .register-button button {
     margin-top: 1em;
     padding: 5px 20px;
-    background-color: #687b8f;
+    background-color: #FFA500; 
     margin-left: 10px;
     width: 100%;
-    color: #fff
+    color: #fff;
+    cursor: pointer;
   }
 
   .sign-in-title{
