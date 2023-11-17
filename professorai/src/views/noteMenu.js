@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "../styles/noteMenu.css";
+import "./styles/noteMenu.css";
 import Navbar from "../components/navbar";
 import DisplayCourse from "../components/displayCourse";
 import DisplayNote from "../components/displayNote";

@@ -83,7 +83,7 @@
 // export default RegisterPrompt;
 
 import React, { useState } from 'react';
-import '../styles/register.css';
+import './styles/register.css';
 import { register } from "../api/authApi";
 import { useNavigate } from 'react-router-dom';
 

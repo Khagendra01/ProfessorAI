@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Quiz.css"; // Import the CSS file for styling
+import "./styles/Quiz.css"; // Import the CSS file for styling
 
 import { sendQuiz } from "../api/chatApi";
 

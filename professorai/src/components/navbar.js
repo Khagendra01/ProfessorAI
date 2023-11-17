@@ -1,6 +1,6 @@
 
 
-import "../styles/navbar.css"; // Import the CSS file for styling
+import "./styles/navbar.css"; // Import the CSS file for styling
 import { AuthContext } from "../App";
 import Logo from '../assets/logo.png';
 import Modal from "./Modal";

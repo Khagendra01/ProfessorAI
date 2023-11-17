@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 
-import "../styles/displayNote.css";
+import "./styles/displayNote.css";
 import {  useNavigate } from "react-router-dom";
 import DrawExp from "./draw";
 import { TinyMCEEditor } from "tinymce";

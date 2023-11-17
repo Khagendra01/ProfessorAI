@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import "../styles/quizMenu.css";
+import "./styles/quizMenu.css";
 import Navbar from "../components/navbar";
 import DisplayCourse from "../components/displayCourse";
 import Quiz from "../components/quiz";

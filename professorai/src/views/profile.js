@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import '../styles/profile.css';
+import './styles/profile.css';
 import Navbar from '../components/navbar';
 import { AuthContext } from '../App';
 

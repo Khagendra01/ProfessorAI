@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Feedback.css"; // Import the CSS file for styling
+import "./styles/Feedback.css"; // Import the CSS file for styling
 import Navbar from '../components/navbar';
 
 

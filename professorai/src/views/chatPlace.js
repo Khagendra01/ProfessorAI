@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/ChatApp.css";
+import "./styles/ChatApp.css";
 import Navbar from '../components/navbar';
 import { sendMessage } from "../api/chatApi";
 import Load from '../assets/loader.gif';

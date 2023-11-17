@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/exam.css';
+import './styles/exam.css';
 import Navbar from '../components/navbar';
 import DisplayCourse from '../components/displayCourse';
 

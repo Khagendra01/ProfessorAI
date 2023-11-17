@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "../styles/register.css";
+import "./styles/register.css";
 import { login } from "../api/authApi";
 import { AuthContext } from "../App";
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
-import '../styles/QuizComp.css';
+import './styles/QuizComp.css';
 
 const QuizComp = () => {
     const [currentTopic, setCurrentTopic] = useState('Physics');
