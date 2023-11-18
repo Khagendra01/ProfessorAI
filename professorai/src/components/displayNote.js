@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 
 import "./styles/displayNote.css";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DrawExp from "./draw";
 import { TinyMCEEditor } from "tinymce";
 
@@ -20,7 +20,7 @@ const notesList = [
   {
     id: 2,
     title: "Jane Smith",
-    date: "Don't forget our meeting tomorrow at 10 AM.",
+    date: "01/01/24",
   },
   // Add more note objects as needed
 ];
@@ -38,39 +38,47 @@ function DisplayNote(props) {
       setNoteInput("");
     }
   };
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
 
   const handleEditorChange = (newContent) => {
     setContent(newContent);
   };
 
-
   return (
     <>
-    <h1>note list</h1>
-      { display ? notesList.map((note) => (
-        <div onClick={() => { setDisplay(false)}} key={note.id} className="note-item">
-          <div className="note-title">{note.title}</div>
-          <div className="note-date">{note.date}</div>
-        </div>
-      )) :     <>
-      
-
-      <div className="note-form">
-        <input
-          type="text"
-          className="note-input"
-          placeholder="Enter your note..."
-          value={noteInput}
-          onChange={(e) => setNoteInput(e.target.value)}
-        />
-        <button className="note-submit" onClick={addNote}>
-          Add Note
-        </button>
+      <h1>note list</h1>
+      <div className="note-list">
+        {display &&
+          notesList.map((note) => (
+            <div
+              onClick={() => {
+                setDisplay(false);
+              }}
+              key={note.id}
+              className="note-item"
+            >
+              <div className="note-title">{note.title}</div>
+              <div className="note-date">{note.date}</div>
+            </div>
+          ))}
       </div>
-      <DrawExp />
-    </> }
-
+      {!display && (
+        <>
+          <div className="note-form">
+            <input
+              type="text"
+              className="note-input"
+              placeholder="Enter your note..."
+              value={noteInput}
+              onChange={(e) => setNoteInput(e.target.value)}
+            />
+            <button className="note-submit" onClick={addNote}>
+              Add Note
+            </button>
+          </div>
+          <DrawExp />
+        </>
+      )}
     </>
   );
 }
