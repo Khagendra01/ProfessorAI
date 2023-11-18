@@ -2,15 +2,15 @@
 
 /* Main container for the page */
 .main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: #f0f0f0;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f0f0f0;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 
@@ -26,9 +26,8 @@
 
 .button-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: row;
+  align-items: center;
 }
 
 .big-button {
