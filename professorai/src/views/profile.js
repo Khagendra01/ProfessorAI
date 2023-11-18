@@ -29,29 +29,26 @@ function Profile() {
 
   
   const removeSubject = (index) => {
-    const updatedSubjects = [...subjects];
-    updatedSubjects.splice(index, 1);
-    setSubjects(updatedSubjects);
+    if (window.confirm('Are you sure you want to remove this subject?')) {
+      const updatedSubjects = [...subjects];
+      updatedSubjects.splice(index, 1);
+      setSubjects(updatedSubjects);
+    }
   };
 
   return (
     <>
     <div className='profile-main'>
       <Navbar/>
-    <div className="profile-container">       
       <div className="profile-header">
         <h1>Welcome, {userProfile.username}</h1>
       </div>
-    </div>
-      <div>
-      <h2>Student Profile</h2>
-      
-      {/* Display list of subjects */}
+      <div className="profile-container">
       <div>
         <h3>Subjects Taken:</h3>
-        <ul>
+        <ul className="subjects-list">
           {subjects.map((subject, index) => (
-            <li key={index}>
+            <li key={index} className="subjects-list-item">
               {subject}
               <button onClick={() => removeSubject(index)}>Remove</button>
             </li>
@@ -59,8 +56,7 @@ function Profile() {
         </ul>
       </div>
 
-      {/* Add a new subject */}
-      <div>
+      <div className="add-subject">
         <h3>Add a Subject:</h3>
         <input
           type="text"
@@ -69,8 +65,6 @@ function Profile() {
         />
         <button onClick={addSubject}>Add Subject</button>
       </div>
-
-      {/* Other features can be added here based on your requirements */}
     </div>
 
     </div>
