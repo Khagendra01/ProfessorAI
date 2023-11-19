@@ -55,9 +55,6 @@
     margin-left: 10px;
   }
   
-  .register-btn button:hover {
-    background-color: #034485;
-  }
 
   .sign-in-button button {
     padding: 10px 20px;
@@ -71,10 +68,6 @@
     margin-left: 10px;
     width: 100%;;
     color: #fff;
-  }
-
-  .sign-in-button button:hover {
-    background-color: #034485;
   }
   
   .register-button button {
