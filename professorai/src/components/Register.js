@@ -115,6 +115,7 @@ const  Register = () => {
           <input
             type="text"
             id="firstName"
+            className="auth-input"
             name="firstName"
             value={registerInfo.firstName}
             onChange={(e) => handleregisterInfoChange(e.target.name, e.target.value)}
@@ -127,6 +128,7 @@ const  Register = () => {
             type="text"
             id="lastName"
             name="lastName"
+            className="auth-input"
             value={registerInfo.lastName}
             onChange={(e) => handleregisterInfoChange(e.target.name, e.target.value)}
             required
@@ -138,6 +140,7 @@ const  Register = () => {
             type="email"
             id="email"
             name="emailAddress"
+            className="auth-input"
             value={registerInfo.email}
             onChange={(e) => handleregisterInfoChange(e.target.name, e.target.value)}
             required
@@ -149,6 +152,7 @@ const  Register = () => {
             type="password"
             id="password"
             name="password"
+            className="auth-input"
             value={registerInfo.password}
             onChange={(e) => handleregisterInfoChange(e.target.name, e.target.value)}
             required

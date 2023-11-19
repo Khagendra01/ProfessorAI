@@ -41,7 +41,7 @@ function SignInPrompt() {
           <label htmlFor="firstName">Username</label>
           <input
             type="text"
-            className="username-input"
+            className="auth-input"
             placeholder="Enter your username"
             name="username"
             value={loginInfo.username}
@@ -54,7 +54,7 @@ function SignInPrompt() {
           <label htmlFor="firstName">Password</label>
           <input
             type="password"
-            className="username-input"
+            className="auth-input"
             placeholder="Enter your password"
             name="password"
             value={loginInfo.password}

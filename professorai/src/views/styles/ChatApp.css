@@ -90,3 +90,17 @@ input[type="text"] input[type="email"] input[type="password"] {
 .send-btn button:hover {
   background-color: #0056b3;
 }
+
+.user-p{
+  text-align: left;
+  margin-bottom: 1px;
+  font-size: 80%;
+  color: #007acc;
+}
+
+.assistant-p{
+  text-align: right;
+  margin-bottom: 1px;
+  font-size: 80%;
+  color: #8b3fd4;
+}
