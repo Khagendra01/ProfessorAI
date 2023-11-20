@@ -5,6 +5,8 @@ import "./styles/learnNew.css";
 
 function LearnNew(props) {
 
+  {/* Generate a random fact for student with title: and content: */}
+
     const [knowledge, setKnowledge] = useState({ title : "Valakushari" , content : "It is a nepali word to say that two people are talking ear to ear "})
 
     return (
