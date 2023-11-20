@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import './styles/profile.css';
 import Navbar from '../components/navbar';
 import { AuthContext } from '../App';
+import { addSubjectToProfile, getAllSubjects, removeSubject } from '../api/subjectApi';
 
 
 
@@ -14,25 +15,46 @@ function Profile() {
     level: 5,
   };
 
-  const [subjects, setSubjects] = useState(['Math', 'Science', 'History']);
+  const [subjects, setSubjects] = useState([]);
 
   
   const [newSubject, setNewSubject] = useState('');
 
-  
+  React.useEffect(()=>{
+    getData();
+  },[])
+
+  const getData = async () => {
+    getAllSubjects(user.id).then((response)=>{
+      setSubjects(response)
+    })
+    .then(()=>{
+      setNewSubject("")
+    })
+    .catch((error)=>{
+      alert("Something went wrong")
+    })
+  }
   const addSubject = () => {
-    if (newSubject.trim() !== '') {
-      setSubjects([...subjects, newSubject]);
-      setNewSubject('');
+    if (newSubject.trim() !== '') {      
+      addSubjectToProfile({userId :`${user.id}`, subjectValue: `${newSubject}` }).then(()=>{
+        getData();
+      }
+      ).catch((error)=>{
+        alert(error.message)
+      })
     }
   };
 
   
-  const removeSubject = (index) => {
+  const handleRemoveSubject = (subjectId) => {
     if (window.confirm('Are you sure you want to remove this subject?')) {
-      const updatedSubjects = [...subjects];
-      updatedSubjects.splice(index, 1);
-      setSubjects(updatedSubjects);
+      removeSubject({userId :`${user.id}`, subjectId: `${subjectId}` }).then(()=>{
+        getData();
+      }
+      ).catch((error)=>{
+        alert(error.message)
+      })
     }
   };
 
@@ -47,10 +69,10 @@ function Profile() {
       <div>
         <h3>Subjects Taken:</h3>
         <ul className="subjects-list">
-          {subjects.map((subject, index) => (
-            <li key={index} className="subjects-list-item">
-              {subject}
-              <button onClick={() => removeSubject(index)}>Remove</button>
+          {subjects.map((subject) => (
+            <li key={subject.id} className="subjects-list-item" style={{textTransform: 'capitalize'}}>
+              {subject.name}
+              <button onClick={() => handleRemoveSubject(subject.id)}>Remove</button>
             </li>
           ))}
         </ul>
