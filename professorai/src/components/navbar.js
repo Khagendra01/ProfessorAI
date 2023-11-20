@@ -5,7 +5,7 @@ import { AuthContext } from "../App";
 import Logo from '../assets/logo.png';
 import Modal from "./Modal";
 
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Assuming you're using React Router
 
 function Navbar() {
@@ -26,7 +26,7 @@ function Navbar() {
   const handleProfileClick = () => {
     setIsOpen(!isOpen); // Toggle the isOpen state
   }
-  React.useEffect(() => {
+  useEffect(() => {
     // Add a click event listener to the document body
     const handleOutsideClick = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
