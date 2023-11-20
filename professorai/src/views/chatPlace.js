@@ -11,9 +11,9 @@ export const Loader = () =>{
 }
 function ChatApp() {
   const [messages, setMessages] = useState([ { role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI" } ]);
-  const[sendState, setSendState] = React.useState(false);
+  const[sendState, setSendState] = useState(false);
   const [input, setInput] = useState("");
-  const [isSending, setIsSending] = React.useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(()=>{
     if(sendState) {
@@ -34,7 +34,13 @@ function ChatApp() {
       ...prevMessages,
       { role: "user", content: input },
     ]);
+    setInput("")
     setSendState(true);
+  };
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSendMessage();
+    }
   };
 
   const send = async() => {
@@ -62,26 +68,28 @@ function ChatApp() {
           <div className="chat-container">
             <div className="chat-messages">
               {messages.map((message, index) => (
-                <>
-                {message.role}:
-                <div
-                  key={index}
+                <div key={index}>
+                <p className={message.role === "user"? "user-p" : "assistant-p" }>{message.role}:</p>
+                <div                 
                   className={`message ${
                     message.role === "user" ? "user" : "assistant"
                   }`}
                 >
                    {message.content}
                 </div>
-                </>
+                </div>
               ))}
               {isSending && <Loader/>}
             </div>
             <div className="chat-input">
               <input
                 type="text"
+                className="auth-input"
                 placeholder="Type your message..."
                 value={input}
                 onChange={handleInput}
+                onKeyPress={handleKeyPress}
+                
               />
               <div className="send-btn" >
               <button onClick={handleSendMessage}>Send</button>

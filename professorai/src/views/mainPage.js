@@ -40,7 +40,7 @@ function MainPage() {
         <button onClick={() => handleNavigation("/feedback")} className="big-button">
           Get Your Feedback
         </button>
-        <button onClick={() => handleNavigation("/")} className="big-button">
+        <button onClick={() => handleNavigation("/learnNew")} className="big-button">
           Learn Something New
         </button>
       </div>
