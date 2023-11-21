@@ -22,4 +22,16 @@ function sendQuiz(quizQuerry) {
     });
 }
 
-export { sendMessage, sendQuiz };
+function sendExplore(quizQuerry) {
+  return instance
+    .post("/api/explore/send", quizQuerry)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+
+export { sendMessage, sendQuiz, sendExplore };

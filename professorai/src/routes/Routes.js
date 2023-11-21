@@ -12,7 +12,6 @@ import RegisterPrompt from '../components/Register';
 import NoteMenu from '../views/noteMenu';
 import ExamPrep from '../views/examPrep';
 import QuizComp from '../components/QuizComp';
-import Explore from '../views/explore';
 
 import LearnNew from '../views/learnNew';
 
@@ -32,7 +31,6 @@ const RouteConfig= () => {
           <Route path="/login" element={!user ? <SignInPrompt /> : <Navigate to='/' />} />
           <Route path="/noteMenu" element={user ? <NoteMenu /> : <Navigate to='/' />} />
           <Route path="/examPrep" element={user ? <ExamPrep /> : <Navigate to='/' />} />
-          <Route path="/explore" element={<Explore /> } />
           <Route path="/learnNew" element={<LearnNew /> } />
         </Routes>
       </BrowserRouter>
