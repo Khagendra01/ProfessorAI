@@ -6,9 +6,11 @@ import Quiz from "../components/quiz";
 
 function QuizMenu() {
   const [display, setDisplay] = useState(true);
+  const [topic, setTopic] = useState();
 
-  const handleCourseClicked = () => {
+  const handleCourseClicked = ( id, title ) => {
     setDisplay(false);
+    setTopic(title)
   };
 
   return (
@@ -18,15 +20,14 @@ function QuizMenu() {
       {display && (
         <>
           {" "}
-          <p>note menu</p>
           <DisplayCourse
-            displayType={"noteList"}
+            displayType={"Quiz Menu"}
             onCourseClicked={handleCourseClicked}
           />{" "}
         </>
       )}
 
-      {!display && <Quiz />}
+      {!display && <Quiz topic={topic} />}
     </div>
   );
 }
