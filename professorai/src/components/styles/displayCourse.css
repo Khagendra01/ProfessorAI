@@ -10,15 +10,57 @@
     cursor: pointer;
     background-color: #FFD700;
     color: #3D2B1F;
+    perspective: 1000px;
+    flex: 1 0 20%;
   }
 
+  .course-card {
+    perspective: 1000px;
+  }
+  
+  .course-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .course-card:hover .course-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .course-card-front, .course-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .course-card-back {
+    background-color: #bbb;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
   .course-card:hover {
-    background-color: #FFA500; /* Change to your desired hover color */
+    background-color: #FFA500;
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
   }
   
   .course-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
   }
+
+  .menu-title {
+    /* Add specific styles for the title if needed */
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
   

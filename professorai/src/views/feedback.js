@@ -8,9 +8,6 @@ function Feedback() {
 
   const navigate = useNavigate();
 
-  const handleNavigation = (route) => {
-    navigate(route);
-  };
 
 
   return (
@@ -19,15 +16,15 @@ function Feedback() {
       <div className="feedback-container">
         <h1 className="feedback-title">Feedback</h1>
         <p className="feedback-description">
-          These are the area where you seemed to be weak and you can work on it.
+          Here I am planning to show all the previous taken quiz in different type of chart and graph to see how user is performing.
         </p>
         <form>
           <div className="form-group">
             <label htmlFor="feedback" className="form-label">
-              Your Feedback:
+              This is title
             </label>
           </div>
-          <button onClick={() => handleNavigation("/quiz")} className="submit-button">
+          <button onClick={() => navigate("/quizMenu")} className="submit-button">
             Practice now
           </button>
         </form>

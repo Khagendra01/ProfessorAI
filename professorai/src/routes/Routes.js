@@ -11,9 +11,9 @@ import { AuthContext } from '../App';
 import RegisterPrompt from '../components/Register';
 import NoteMenu from '../views/noteMenu';
 import ExamPrep from '../views/examPrep';
-import QuizComp from '../components/QuizComp';
 
 import LearnNew from '../views/learnNew';
+import NoteEditor from '../components/NoteEditor';
 
 const RouteConfig= () => {
     const { user } = useContext(AuthContext);
@@ -23,7 +23,6 @@ const RouteConfig= () => {
           <Route path="/" element={user ? <MainPage />: <SignInPrompt />} />
           <Route path="/mainPage" element={user ? <MainPage /> : <Navigate to='/'/> } />
           <Route path="/chatPlace" element={user ? <ChatApp /> : <Navigate to='/' />} />
-          <Route path="/quiz" element={user ? <QuizComp /> : <Navigate to='/' />} />
           <Route path="/quizMenu" element={user ? <QuizMenu /> : <Navigate to='/' />} />
           <Route path="/feedback" element={user ? <Feedback /> : <Navigate to='/' />} />
           <Route path="/profile" element={user ? <Profile /> : <Navigate to='/' />} />
@@ -32,6 +31,7 @@ const RouteConfig= () => {
           <Route path="/noteMenu" element={user ? <NoteMenu /> : <Navigate to='/' />} />
           <Route path="/examPrep" element={user ? <ExamPrep /> : <Navigate to='/' />} />
           <Route path="/learnNew" element={<LearnNew /> } />
+          <Route path ="/:courseId/notes/:id" element = {user ? <NoteEditor /> : <Navigate to='/' />} />
         </Routes>
       </BrowserRouter>
     );
