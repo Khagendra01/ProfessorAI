@@ -1,12 +1,29 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-const DrawingCanvas = () => {
+import { addNoteToSubject, getNote } from "../api/noteApi";
+
+import { AuthContext } from "../App";
+
+const DrawingCanvas = ({ noteValue, courseId, canvasValue }) => {
+  const { user } = useContext(AuthContext);
+
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
+
+    if(canvasValue != null){
+      const image = new Image();
+      image.src = canvasValue;
+      image.onload = () => {
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+      };
+    }
 
     const startDrawing = (e) => {
       setIsDrawing(true);
@@ -48,35 +65,50 @@ const DrawingCanvas = () => {
       canvas.removeEventListener("mousemove", draw);
       canvas.removeEventListener("mouseout", stopDrawing);
     };
-  }, [isDrawing]);
+  }, [isDrawing, canvasValue]);
 
-  const captureImage = () => {
+  const addANote = () => {
     const canvas = canvasRef.current;
     const dataURL = canvas.toDataURL(); // Get the image data URL
-    console.log(dataURL); // You can send this dataURL to your server or use it as needed
+
+    addNoteToSubject({
+      userId: `${user.id}`,
+      subjectId: `${courseId}`,
+      noteValue: `${noteValue}`,
+      noteCanvas: `${dataURL}`,
+    })
+      .then(() => {
+        alert("note added")
+        navigate("/noteMenu");
+      })
+      .catch((error) => {
+        alert("Something went wrong");
+      });
   };
 
   const [height, setheight] = useState(400);
 
   return (
-    <>
-      <button className="note-submit" onClick={captureImage}>
-        capture
+    <div className="canvas-area">
+      <button className="note-submit" onClick={addANote}>
+        Add Note
       </button>
+      <h2> Draw your note</h2>
       <canvas
         ref={canvasRef}
         width={800}
         height={height}
         style={{ border: "1px solid #000" }}
       ></canvas>
+    <br></br>
       <button
         onClick={() => {
           setheight(height + 200);
         }}
       >
-        Add +
+        +
       </button>
-    </>
+    </div>
   );
 };
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8zd3Ix4Q4zjApOCl+EiOdaemFIerFj8TJu66CkFDndhSUwgvpPxQxtOKic+NXbOXGTJ8lUQkypQ5hQZOV4muGw==",
+  "dgSpecHash": "PzKWta9IuKKtImvRRp4VDe8/0aekJYP4CqlvFrsp9war2E9NYYPsxr+4CTEFGtldI+NCnOdGmaGhd1aiAiuRRw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Khage\\source\\repos\\ProfessorAIAPI\\ProfessorAIAPI\\ProfessorAIAPI.csproj",
+  "projectFilePath": "C:\\Users\\Khage\\Downloads\\ProfessorAI\\ProfessorAIAPI\\ProfessorAIAPI\\ProfessorAIAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Khage\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Khage\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

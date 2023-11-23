@@ -3099,11 +3099,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Khage\\source\\repos\\ProfessorAIAPI\\ProfessorAIAPI\\ProfessorAIAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Khage\\Downloads\\ProfessorAI\\ProfessorAIAPI\\ProfessorAIAPI\\ProfessorAIAPI.csproj",
       "projectName": "ProfessorAIAPI",
-      "projectPath": "C:\\Users\\Khage\\source\\repos\\ProfessorAIAPI\\ProfessorAIAPI\\ProfessorAIAPI.csproj",
+      "projectPath": "C:\\Users\\Khage\\Downloads\\ProfessorAI\\ProfessorAIAPI\\ProfessorAIAPI\\ProfessorAIAPI.csproj",
       "packagesPath": "C:\\Users\\Khage\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Khage\\source\\repos\\ProfessorAIAPI\\ProfessorAIAPI\\obj\\",
+      "outputPath": "C:\\Users\\Khage\\Downloads\\ProfessorAI\\ProfessorAIAPI\\ProfessorAIAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Khage\\AppData\\Roaming\\NuGet\\NuGet.Config",

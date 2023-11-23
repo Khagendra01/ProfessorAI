@@ -33,5 +33,16 @@ function sendExplore(quizQuerry) {
     });
 }
 
+function sendExamPrep(quizQuerry) {
+  return instance
+    .post("/api/examprep/send", quizQuerry)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
-export { sendMessage, sendQuiz, sendExplore };
+
+export { sendMessage, sendQuiz, sendExplore, sendExamPrep };

@@ -23,8 +23,9 @@ function Profile() {
   };
 
   useEffect(()=>{
+    if(user!== undefined)
     getData()
-  },[]);
+  },[user]);
   return (
     <>
       <div className="profile-main">

@@ -1,12 +1,65 @@
-
 .exam-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: #f0f0f0;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #f0f0f0;
+  min-height: 100vh; /* Use min-height instead of height for responsiveness */
+}
+
+/* Exam preparation container */
+.examprep-container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Title styling */
+.examprep-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-transform: capitalize;
+}
+
+
+.examprep-description {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+.each-content {
+  color: #000;
+  background-color: rgb(165, 120, 164);
+  padding: 15px;
+  border-radius: 8px; 
+  margin-top: 8px;
+  font-size: x-large;
+}
+
+.form-label {
+  font-weight: bold; 
+  color: #fff;
+}
+
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+
+.submit-button:hover {
+  background-color: #0056b3;
+}

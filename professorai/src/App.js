@@ -6,7 +6,8 @@ import SubjectWrapper from "./wrapper/addSubject";
 export const AuthContext = createContext();
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
+  const [auth, setAuth] = useState();
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -14,10 +15,11 @@ function App() {
       await refreshLogin()
         .then((res) => {
           setUser(res);
-          console.log(token);
+          setAuth(true)
         })
         .catch((error) => {
           setUser();
+          setAuth();
           localStorage.removeItem("accessToken");
         });
     };
@@ -28,7 +30,7 @@ function App() {
 
   return (
     <>
-      <AuthContext.Provider value={{ user, setUser }}>
+      <AuthContext.Provider value={{ user, setUser, auth }}>
         <SubjectWrapper>
           <RouteConfig />
         </SubjectWrapper>

@@ -1,36 +1,58 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import "./styles/displayCourse.css";
 import { useNavigate } from "react-router-dom";
-
-const courseData = [
-  {
-    id: 1,
-    title: "General",
-    description: "Note",
-  },
-  {
-    id: 2,
-    title: "Chemistry",
-    description: "Chemistry Fundamentals",
-  },
-  // Add more courses as needed
-];
+import { SubjectContext } from "../wrapper/addSubject";
+import { AuthContext } from "../App";
 
 function DisplayCourse(props) {
-  //const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  const { subjects, getData } = useContext(SubjectContext);
 
-  const courseClicked = () => {
-    props.onCourseClicked();
+  useEffect(() => {
+    if (user !== undefined) getData();
+  }, [user]);
+
+  const getCardStyles = (displayType) => {
+    switch (displayType) {
+      case "Note Menu":
+        return {
+          backgroundColor: "lightblue",
+          color: "black",
+        };
+      case "Quiz Menu":
+        return {
+          backgroundColor: "lightgreen",
+          color: "black",
+        };
+      case "Exam Preparation":
+        return {
+          backgroundColor: "lightcoral",
+          color: "white",
+        };
+      default:
+        return {
+          backgroundColor: "gray",
+          color: "black",
+        };
+    }
+  };
+
+  const courseClicked = (id, title) => {
+    props.onCourseClicked(id, title);
   };
 
   return (
     <>
+      <h1 className="menu-title"> {props.displayType} </h1>
       <div className="course-list">
-        {courseData.map((course) => (
-          <div onClick={() => courseClicked()} className="course-card">
-            <h2>{course.title}</h2>
-            <p>{course.description}</p>
+        {subjects.map((course) => (
+          <div
+            onClick={() => courseClicked(course.id, course.name)}
+            className="course-card"
+            style={getCardStyles(props.displayType)}
+          >
+            <h2 style={{ textTransform: "capitalize" }}>{course.name}</h2>
           </div>
         ))}
       </div>

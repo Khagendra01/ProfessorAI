@@ -4,11 +4,16 @@ import "./styles/noteMenu.css";
 import Navbar from "../components/navbar";
 import DisplayCourse from "../components/displayCourse";
 import DisplayNote from "../components/displayNote";
+import { useLocation } from "react-router-dom";
 
 function Note() {
   const [display, setDisplay] = useState(true);
-  const handleCourseClicked = () => {
+  const [courseId, setCourseId] = useState();
+
+
+  const handleCourseClicked = ( id ) => {
     setDisplay(false);
+    setCourseId(id);
   };
 
   return (
@@ -17,16 +22,15 @@ function Note() {
 
       {display && (
         <>
-          {" "}
-          <p>note menu</p>
+          {" "}     
           <DisplayCourse
-            displayType={"noteList"}
+            displayType={"Note Menu"}
             onCourseClicked={handleCourseClicked}
           />{" "}
         </>
       )}
 
-      {!display && <DisplayNote />}
+      {!display && <DisplayNote courseId={courseId}/>}
     </div>
   );
 }

@@ -1,0 +1,63 @@
+.note-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f0f0f0;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .delete {
+    align-self: flex-end;
+    margin-right: 20px; 
+    background-color: rgb(182, 6, 6);
+    padding: 10px;
+    color: #FFF;
+    border: none;
+    border-radius: 15px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+
+  .delete:hover{
+    background-color: rgb(248, 40, 40);
+  }
+  
+  .note-form {
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  
+  .note-input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: #f5f5f5;
+    font: 16px Arial;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .note-input:focus {
+    border-color: blue;
+  }
+  
+  .note-submit {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .note-submit:hover {
+    background-color: #555;
+  }
+  
+  

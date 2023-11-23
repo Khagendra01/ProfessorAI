@@ -10,6 +10,7 @@ function addNoteToSubject(NoteInfo) {
       throw new Error(error);
     });
 }
+
 function getNotes(NoteInfo) {
   return instance
     .post(`/api/notes`, NoteInfo)
@@ -21,9 +22,9 @@ function getNotes(NoteInfo) {
     });
 }
 
-function getNote(id) {
+function getNote(noteId) {
   return instance
-    .get(`/api/note/$${id}`,)
+  .get(`/api/notes?noteId=${noteId}`)
     .then((response) => {
       return response;
     })
@@ -32,9 +33,9 @@ function getNote(id) {
     });
 }
 
-function removeNote(NoteInfo) {
+function removeNote(noteId) {
   return instance
-    .post(`/api/Note/remove`, NoteInfo)
+    .delete(`/api/Note/${noteId}`)
     .then((response) => {
       return response;
     })

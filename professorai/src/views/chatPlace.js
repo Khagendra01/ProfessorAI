@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
+
+
 import "./styles/ChatApp.css";
 import Navbar from '../components/navbar';
+
+import ChatSidebar from "../components/ChatSideBar";
+
 import { sendMessage } from "../api/chatApi";
 import Load from '../assets/loader.gif';
 
@@ -14,6 +19,11 @@ function ChatApp() {
   const[sendState, setSendState] = useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [currentChat, setCurrentChat] = useState("Default Chat");
+  const [chatHistory, setChatHistory] = useState([
+    { title: "Default Chat", messages: [] },
+    // Add other chat history entries as needed
+  ]);
 
   useEffect(()=>{
     if(sendState) {
@@ -60,12 +70,25 @@ function ChatApp() {
     }
   }
 
+  const handleNewChat = () => {
+    // Add logic to handle starting a new chat
+    const newChatTitle = prompt("Enter a new chat title:") || "New Chat";
+    const newChat = { title: newChatTitle, messages: [] };
+    setChatHistory([...chatHistory, newChat]);
+    setCurrentChat(newChatTitle);
+    setMessages([]);
+  };
+
+  
+
   return (
     <>
       <div className="chat-main">
         <Navbar />
+        <ChatSidebar chats={chatHistory} setCurrentChat={setCurrentChat} handleNewChat={handleNewChat} />
         <div className="chat-app">
           <div className="chat-container">
+          
             <div className="chat-messages">
               {messages.map((message, index) => (
                 <div key={index}>
