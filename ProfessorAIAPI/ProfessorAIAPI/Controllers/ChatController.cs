@@ -25,6 +25,7 @@ namespace ProfessorAIAPI.Controllers
             this._mapper = mapper;
         }
 
+        
         [HttpPost("send")]
         public async Task<ProfessorAIAPI.Classes.Response<Message>> SendMessage (List<Message>messages)
         {

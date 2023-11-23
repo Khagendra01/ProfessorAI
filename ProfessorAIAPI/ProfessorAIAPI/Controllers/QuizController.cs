@@ -4,8 +4,10 @@ using Azure.AI.OpenAI;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using ProfessorAIAPI.Classes;
 using System;
+using System.Collections.Generic;
 
 namespace ProfessorAIAPI.Controllers
 {
@@ -25,27 +27,38 @@ namespace ProfessorAIAPI.Controllers
             this._mapper = mapper;
         }
 
-        private Question ParseQuestion(string content)
+       private List<Question> ParseQuestion(string content)
+{
+    List<Question> questions = new List<Question>();
+
+    // Split the content into individual questions
+    string[] questionBlocks = content.Split(new string[] { "\n\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+    foreach (string block in questionBlocks)
+    {
+        // Split each question block into lines
+        string[] lines = block.Split('\n');
+
+        // Extract question text and answer
+        string questionText = lines[0].Trim();
+        string correctAnswer = lines[lines.Length - 1];
+        correctAnswer  = correctAnswer.Replace("Answer: ", "");
+
+                // Extract options
+                List<string> options = new List<string>();
+        for (int i = 1; i < lines.Length - 1; i++)
         {
-            // Split the content into lines
-            var lines = content.Split('\n');
-
-            // Assume the first line is the question text
-            var questionText = lines[0];
-
-            // Assume the next four lines are the options
-            var options = lines.Skip(1).Take(4).ToList();
-
-            // Assume the last line is the correct answer
-            var correctAnswer = lines.Last();
-
-            return new Question
-            {
-                QuestionText = questionText,
-                Options = options,
-                CorrectAnswer = correctAnswer
-            };
+          string optionText = lines[i].Trim();
+          options.Add(optionText);
         }
+
+        // Add the question to the list
+        questions.Add(new Question(questions.Count + 1, questionText, options, correctAnswer));
+    }
+
+    return questions;
+}
+
 
 
         [HttpPost("getQuiz")]
@@ -58,19 +71,15 @@ namespace ProfessorAIAPI.Controllers
                 var chatCompletionsOptions = new ChatCompletionsOptions(chatMessages);
                 var response = client.GetChatCompletions(deploymentOrModelName: modelname, chatCompletionsOptions);
 
-                List<Question> questions = new List<Question>();
-                foreach (var choice in response.Value.Choices)
-                {
-                    // Parse the content of the choice into a Question object
-                    Question question = ParseQuestion(choice.Message.Content);
-                    questions.Add(question);
-                }
+                List<Question> questions = new List<Question>(); // Parse the content of the choice into a Question object
+                questions = ParseQuestion(response.Value.Choices[0].Message.Content);
+
 
                 return new Classes.Response<List<Question>>("Success", questions, true);
             }
             catch (Exception ex)
             {
-                return new Classes.Response<List<Question>>("Failed", null, false);
+                return new Classes.Response<List<Question>>(ex.Message, null, false);
             }
         }
 

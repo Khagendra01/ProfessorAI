@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProfessorAIAPI.Database;
 
@@ -11,9 +12,10 @@ using ProfessorAIAPI.Database;
 namespace ProfessorAIAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231119233018_Added subject table")]
+    partial class Addedsubjecttable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,34 +155,6 @@ namespace ProfessorAIAPI.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ProfessorAIAPI.Classes.Note", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("NoteCanvas")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NoteValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SubjectId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubjectId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("NoteTable");
                 });
 
             modelBuilder.Entity("ProfessorAIAPI.Classes.Subject", b =>
@@ -343,25 +317,6 @@ namespace ProfessorAIAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProfessorAIAPI.Classes.Note", b =>
-                {
-                    b.HasOne("ProfessorAIAPI.Classes.Subject", "SubjectDetails")
-                        .WithMany("Notes")
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProfessorAIAPI.Classes.User", "User")
-                        .WithMany("Notes")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("SubjectDetails");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ProfessorAIAPI.Classes.UserSubject", b =>
                 {
                     b.HasOne("ProfessorAIAPI.Classes.Subject", "SubjectDetails")
@@ -383,15 +338,11 @@ namespace ProfessorAIAPI.Migrations
 
             modelBuilder.Entity("ProfessorAIAPI.Classes.Subject", b =>
                 {
-                    b.Navigation("Notes");
-
                     b.Navigation("UserSubjects");
                 });
 
             modelBuilder.Entity("ProfessorAIAPI.Classes.User", b =>
                 {
-                    b.Navigation("Notes");
-
                     b.Navigation("Subjects");
                 });
 #pragma warning restore 612, 618

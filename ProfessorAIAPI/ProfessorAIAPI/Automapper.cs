@@ -16,6 +16,11 @@ namespace ProfessorAIAPI
             CreateMap<RegisterInfo, User>()
                 .ForMember(dest => dest.Email, src => src.MapFrom(src => src.EmailAddress))
                 .ForMember(dest => dest.UserName, src => src.MapFrom(src => src.EmailAddress));
+            CreateMap<Subject, SubjectViewModel>();
+
+            CreateMap<NoteDetail, Note>();
+            CreateMap<Note, NoteDetail>();
+            CreateMap<Note, NoteListViewModel>();
         }
     }
 }
