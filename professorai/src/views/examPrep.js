@@ -24,12 +24,11 @@ function ExamPrep() {
     var examQuerry = [
       {
         role: "user",
-        content: `Generate exam preparation guidelines on the topic of ${title} with 10 of the \"title: title here\n\" and \"content: content here\n\n\"`,
+        content: `Generate exam preparation guidelines on the topic of ${title} with 10 of the \"title: ....\n\" and \"content: .......\n\n\"`,
       },
     ];
     try {
       const response = await sendExamPrep(examQuerry);
-      console.log(response);
       setResource(response);
       setLoading(false);
     } catch (error) {

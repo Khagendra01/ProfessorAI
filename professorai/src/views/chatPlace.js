@@ -16,10 +16,15 @@ export const Loader = () =>{
 }
 function ChatApp() {
   const [messages, setMessages] = useState([ { role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI" } ]);
+
+  const [messageRequest, setMessageRequest] = useState( );
+
   const[sendState, setSendState] = useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+
   const [currentChat, setCurrentChat] = useState("Default Chat");
+
   const [chatHistory, setChatHistory] = useState([
     { title: "Default Chat", messages: [] },
     // Add other chat history entries as needed
@@ -92,7 +97,7 @@ function ChatApp() {
             <div className="chat-messages">
               {messages.map((message, index) => (
                 <div key={index}>
-                <p className={message.role === "user"? "user-p" : "assistant-p" }>{message.role}:</p>
+                <p className={message.role === "user"? "user-p" : "assistant-p" }>{(message.role === "user"? "Student" : "Professor AI")}:</p>
                 <div                 
                   className={`message ${
                     message.role === "user" ? "user" : "assistant"
