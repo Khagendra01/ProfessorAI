@@ -33,10 +33,11 @@ namespace ProfessorAIAPI.Controllers
             {
                 List<ChatMessage> chatMessages = _mapper.Map<List<ChatMessage>>(messages);
                 OpenAIClient client = new(new Uri(endpoint), new AzureKeyCredential(key));
+
                 var chatCompletionsOptions = new ChatCompletionsOptions(chatMessages);
-                var response = client.GetChatCompletions(
-        deploymentOrModelName: modelname,
-        chatCompletionsOptions);
+
+
+                var response = client.GetChatCompletions( deploymentOrModelName: modelname, chatCompletionsOptions);
 
                 Message chat = new Message { Role = response.Value.Choices[0].Message.Role.ToString(), Content = response.Value.Choices[0].Message.Content };
 
