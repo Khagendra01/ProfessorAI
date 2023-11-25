@@ -2,9 +2,9 @@ import { React, useContext, useEffect, useState } from "react";
 
 import "./styles/displayNote.css";
 import DrawExp from "./draw";
-import { SubjectContext } from "../wrapper/addSubject";
-import { AuthContext } from "../App";
-import { getNotes } from "../api/noteApi";
+import { SubjectContext } from "../../wrapper/addSubject";
+import { AuthContext } from "../../App";
+import { getNotes } from "../../api/noteApi";
 import { useNavigate } from "react-router-dom";
 
 //list of the note recorder by manxe

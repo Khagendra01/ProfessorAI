@@ -13,7 +13,7 @@ import NoteMenu from '../views/noteMenu';
 import ExamPrep from '../views/examPrep';
 
 import LearnNew from '../views/learnNew';
-import NoteEditor from '../components/NoteEditor';
+import NoteEditor from '../components/Notes/NoteEditor';
 
 const RouteConfig= () => {
     const { user } = useContext(AuthContext);

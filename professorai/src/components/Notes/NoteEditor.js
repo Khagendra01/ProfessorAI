@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import DrawingCanvas from "./draw";
 import { useNavigate, useParams } from "react-router-dom";
-import { getNote, removeNote } from "../api/noteApi";
+import { getNote, removeNote } from "../../api/noteApi";
 
-import Navbar from "./navbar";
+import Navbar from "../navbar";
 
 import "./styles/noteEditor.css";
 

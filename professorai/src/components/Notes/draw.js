@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { addNoteToSubject, getNote } from "../api/noteApi";
+import { addNoteToSubject, getNote } from "../../api/noteApi";
 
-import { AuthContext } from "../App";
+import { AuthContext } from "../../App";
 
 const DrawingCanvas = ({ noteValue, courseId, canvasValue }) => {
   const { user } = useContext(AuthContext);
