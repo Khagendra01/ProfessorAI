@@ -15,15 +15,13 @@ export const Loader = () =>{
   )
 }
 function ChatApp() {
-  const [messages, setMessages] = useState([ { role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI" } ]);
-
-  const [messageRequest, setMessageRequest] = useState( { sessionID: null, title: null, userMessage: null} );
+  const [messageRequest, setMessageRequest] = useState( { sessionID: null, title: "New-Chat", lastMessage: null, cacheMessages: [], messages: [{ role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI." }], totalToken: 0} );
 
   const[sendState, setSendState] = useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
 
-  const [currentChat, setCurrentChat] = useState("Default Chat");
+  const [currentChat, setCurrentChat] = useState("New-Chat");
 
   const [chatHistory, setChatHistory] = useState([
     { title: "Default Chat", messages: [] },
@@ -43,12 +41,14 @@ function ChatApp() {
   const handleSendMessage = async () => {
     if (input.trim() === "") return;
 
-    // Add the user message to the state
+    const currentDateTime = new Date();
+    const formattedDateTime = currentDateTime.toLocaleString();
 
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { role: "user", content: input },
-    ]);
+    setMessageRequest(prevState => ({
+      ...prevState,
+      lastMessage: { role: "user", content: input, dateTime: formattedDateTime }
+    }));
+
     setInput("")
     setSendState(true);
   };
@@ -62,9 +62,9 @@ function ChatApp() {
     setIsSending(true);
     try {
       // Get the assistant's response from Azure OpenAI
-       await sendMessage(messages).then((response)=>{
+       await sendMessage(messageRequest).then((response)=>{
         setSendState(false);
-        setTimeout(()=>{setMessages((prevMessages) => [...prevMessages, response]);
+        setTimeout(()=>{setMessageRequest(response);
         setInput("");
         setIsSending(false);},2000);
        })
@@ -81,7 +81,6 @@ function ChatApp() {
     const newChat = { title: newChatTitle, messages: [] };
     setChatHistory([...chatHistory, newChat]);
     setCurrentChat(newChatTitle);
-    setMessages([]);
   };
 
   
@@ -95,9 +94,9 @@ function ChatApp() {
           <div className="chat-container">
           
             <div className="chat-messages">
-              {messages.map((message, index) => (
+              {messageRequest.messages.map((message, index) => (
                 <div key={index}>
-                <p className={message.role === "user"? "user-p" : "assistant-p" }>{(message.role === "user"? "Student" : "Professor AI")}:</p>
+                <p className={message.role === "user"? "user-p" : "assistant-p" }>{message.dateTime},{(message.role === "user"? "Student" : "Professor AI")}:</p>
                 <div                 
                   className={`message ${
                     message.role === "user" ? "user" : "assistant"
