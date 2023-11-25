@@ -5,7 +5,7 @@ import { getNote, removeNote } from "../../api/noteApi";
 
 import Navbar from "../navbar";
 
-import "./styles/noteEditor.css";
+import "./noteEditor.css";
 
 function NoteEditor() {
 

@@ -1,6 +1,6 @@
 import { React, useContext, useEffect, useState } from "react";
 
-import "./styles/displayNote.css";
+import "./displayNote.css";
 import DrawExp from "./draw";
 import { SubjectContext } from "../../wrapper/addSubject";
 import { AuthContext } from "../../App";
