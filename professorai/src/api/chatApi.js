@@ -11,38 +11,39 @@ function sendMessage(messages) {
     });
 }
 
-function sendQuiz(quizQuerry) {
+function getChatHistory(id) {
   return instance
-    .post("/api/quiz/getQuiz", quizQuerry)
+  .get(`/api/chats?userId=${id}`)
     .then((response) => {
       return response;
     })
     .catch((error) => {
-      console.log(error);
+      throw new Error(error);
     });
 }
 
-function sendExplore(quizQuerry) {
+function getChat(sessionId) {
   return instance
-    .post("/api/explore/send", quizQuerry)
+  .get(`/api/chat?sessionId=${sessionId}`)
     .then((response) => {
       return response;
     })
     .catch((error) => {
-      console.log(error);
+      throw new Error(error);
     });
 }
 
-function sendExamPrep(quizQuerry) {
+function deleteChat(sessionId) {
   return instance
-    .post("/api/examprep/send", quizQuerry)
+  .delete(`/api/chat?sessionId=${sessionId}`)
     .then((response) => {
       return response;
     })
     .catch((error) => {
-      console.log(error);
+      throw new Error(error);
     });
 }
 
 
-export { sendMessage, sendQuiz, sendExplore, sendExamPrep };
+
+export { sendMessage, getChatHistory, getChat, deleteChat };
