@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 
 import "./styles/learnNew.css"; 
-import { sendExplore } from '../api/chatApi';
+import { sendExplore } from '../api/otherApi';
 
 function LearnNew(props) {
 
