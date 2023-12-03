@@ -1,5 +1,5 @@
 # ProfessorAI
-This repository is made for Microsoft AI Classroom Hackathon
+
 
 the way to run this code is:<br>
 go to terminal or command <br>
