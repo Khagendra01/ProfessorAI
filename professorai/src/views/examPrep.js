@@ -3,7 +3,7 @@ import "./styles/exam.css";
 import Navbar from "../components/navbar";
 import DisplayCourse from "../components/displayCourse";
 import { useNavigate } from "react-router-dom";
-import { sendExamPrep } from "../api/chatApi";
+import { sendExamPrep } from "../api/otherApi";
 
 function ExamPrep() {
   const [display, setDisplay] = useState(true);

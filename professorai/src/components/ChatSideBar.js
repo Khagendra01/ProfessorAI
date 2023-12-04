@@ -2,18 +2,18 @@ import React from 'react';
 
 import './styles/chatSideBar.css'
 
-const ChatSideBar = ({ chats, setCurrentChat, handleNewChat }) => {
+const ChatSideBar = ({ chats, handleNewChat }) => {
     return (
       <div className="chat-sidebar">
         <h2>Chat History</h2>
+        <button onClick={handleNewChat}>New Chat</button>
         <ul>
           {chats.map((chat, index) => (
-            <li key={index} onClick={() => setCurrentChat(chat.title)}>
+            <li key={index} onClick={() => { } }>
               {chat.title}
             </li>
           ))}
-        </ul>
-        <button onClick={handleNewChat}>New Chat</button>
+        </ul>      
       </div>
     );
   };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles/Quiz.css"; // Import the CSS file for styling
 
-import { sendQuiz } from "../api/chatApi";
+import { sendQuiz } from "../api/quizApi";
 
 function Quiz( { topic } ) {
   const [questions, setQuestions] = useState([{id: 0, questionText: "Question", options: ["a", "b", "c", "d"], correctAnswer: "Answer"}]);

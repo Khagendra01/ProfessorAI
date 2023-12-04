@@ -24,7 +24,7 @@ function SignInPrompt() {
       setUser(res);
       localStorage.setItem("accessToken", res.accessToken);
       // Redirect to the dashboard page after signing in
-      navigate("/mainPage"); // Navigate to the '/mainPage' route
+      navigate("/profile"); // Navigate to the '/mainPage' route
     } catch (error) {
       alert(`Sorry ${error.message}`);
     } finally {

@@ -7,7 +7,6 @@ export const AuthContext = createContext();
 
 function App() {
   const [user, setUser] = useState();
-  const [auth, setAuth] = useState();
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -15,11 +14,9 @@ function App() {
       await refreshLogin()
         .then((res) => {
           setUser(res);
-          setAuth(true)
         })
         .catch((error) => {
           setUser();
-          setAuth();
           localStorage.removeItem("accessToken");
         });
     };
@@ -30,7 +27,7 @@ function App() {
 
   return (
     <>
-      <AuthContext.Provider value={{ user, setUser, auth }}>
+      <AuthContext.Provider value={{ user, setUser }}>
         <SubjectWrapper>
           <RouteConfig />
         </SubjectWrapper>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 
 import "./styles/ChatApp.css";
@@ -6,8 +6,9 @@ import Navbar from '../components/navbar';
 
 import ChatSidebar from "../components/ChatSideBar";
 
-import { sendMessage } from "../api/chatApi";
+import { getChatHistory, sendMessage } from "../api/chatApi";
 import Load from '../assets/loader.gif';
+import { AuthContext } from "../App";
 
 export const Loader = () =>{
   return (
@@ -15,18 +16,30 @@ export const Loader = () =>{
   )
 }
 function ChatApp() {
-  const [messageRequest, setMessageRequest] = useState( { sessionID: null, title: "New-Chat", lastMessage: null, cacheMessages: [], messages: [{ role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI." }], totalToken: 0} );
+
+  const { user } = useContext(AuthContext);
+
+  const [messageRequest, setMessageRequest] = useState( { sessionID: null, title: "New-Chat", lastMessage: null, cacheMessages: [], messages: [{ role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI." }], totalToken: 0, userId: user.id} );
 
   const[sendState, setSendState] = useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
 
-  const [currentChat, setCurrentChat] = useState("New-Chat");
+  const [chatHistory, setChatHistory] = useState([ ]);
 
-  const [chatHistory, setChatHistory] = useState([
-    { title: "Default Chat", messages: [] },
-    // Add other chat history entries as needed
-  ]);
+  useEffect(() => {
+    //reloadData();
+  },[])
+
+  const reloadData = () => {
+    getChatHistory(user.id).then((response) => {
+      setChatHistory(response);
+      console.log(response)
+    })
+    .catch((error) => {
+      alert("Something went wrong");
+    });
+  }
 
   useEffect(()=>{
     if(sendState) {
@@ -76,11 +89,8 @@ function ChatApp() {
   }
 
   const handleNewChat = () => {
-    // Add logic to handle starting a new chat
-    const newChatTitle = prompt("Enter a new chat title:") || "New Chat";
-    const newChat = { title: newChatTitle, messages: [] };
-    setChatHistory([...chatHistory, newChat]);
-    setCurrentChat(newChatTitle);
+    setMessageRequest({ sessionID: null, title: "New-Chat", lastMessage: null, cacheMessages: [], messages: [{ role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI." }], totalToken: 0, userId: user.id})
+    reloadData();
   };
 
   
@@ -89,7 +99,7 @@ function ChatApp() {
     <>
       <div className="chat-main">
         <Navbar />
-        <ChatSidebar chats={chatHistory} setCurrentChat={setCurrentChat} handleNewChat={handleNewChat} />
+        <ChatSidebar chats={chatHistory} handleNewChat={handleNewChat} />
         <div className="chat-app">
           <div className="chat-container">
           
