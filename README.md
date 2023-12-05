@@ -1,5 +1,6 @@
 # ProfessorAI
 
+Alpha testing link: https://professoraifrontend.azurewebsites.net/
 
 the way to run this code is:<br>
 go to terminal or command <br>
