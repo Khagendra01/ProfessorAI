@@ -11,6 +11,7 @@ namespace ProfessorAIAPI
         {
             CreateMap<Message, ChatMessage>()
                 .ForMember(dest => dest.Role, src => src.MapFrom(src => new ChatRole(src.Role)));
+            CreateMap<Message, MessageFormat>();
             CreateMap<User, UserDetail>()
                 .ForMember(dest => dest.EmailAddress, src => src.MapFrom(src => src.Email)).ReverseMap();
             CreateMap<RegisterInfo, User>()
@@ -21,6 +22,7 @@ namespace ProfessorAIAPI
             CreateMap<NoteDetail, Note>();
             CreateMap<Note, NoteDetail>();
             CreateMap<Note, NoteListViewModel>();
+            CreateMap<ChatRequest, ChatHistory>();
         }
     }
 }

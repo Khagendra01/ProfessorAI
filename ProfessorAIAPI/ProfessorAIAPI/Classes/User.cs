@@ -8,6 +8,7 @@ namespace ProfessorAIAPI.Classes
         public string LastName { get; set; }
         public ICollection<UserSubject> Subjects { get; set; }
         public ICollection<Note> Notes { get; set; }
+        public ICollection<ChatRequest> Chats { get; set; }
 
         public User()
         {

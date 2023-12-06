@@ -16,6 +16,7 @@ namespace ProfessorAIAPI.Database
         public DbSet<Subject> SubjectTable { get; set; }    
         public DbSet<UserSubject> UserSubjectRelationTable { get; set; }
         public DbSet<Note> NoteTable { get; set; }
+        //public DbSet<ChatRequest> ChatTable { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -36,6 +37,12 @@ namespace ProfessorAIAPI.Database
                 .HasMany(subject => subject.Notes)
                 .WithOne(note => note.SubjectDetails)
                 .HasForeignKey(usersubject => usersubject.SubjectId);
+
+
+
+            
+           
+
 
         }
     }

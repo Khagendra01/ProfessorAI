@@ -19,7 +19,7 @@ function ChatApp() {
 
   const { user } = useContext(AuthContext);
 
-  const [messageRequest, setMessageRequest] = useState( { sessionID: null, title: "New-Chat", lastMessage: null, cacheMessages: [], messages: [{ role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI." }], totalToken: 0, userId: user.id} );
+  const [messageRequest, setMessageRequest] = useState( { sessionID: "null", title: "New-Chat", lastMessage: null, cacheMessages: [], messages: [{ role: "assistant", content: "Hello, How can I help you today? My name is ProfessorAI. And, professor Kgen made me." }], totalToken: 0, userId: user.id} );
 
   const[sendState, setSendState] = useState(false);
   const [input, setInput] = useState("");

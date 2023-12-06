@@ -1,55 +1,29 @@
-using Newtonsoft.Json;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Temp.Models
+namespace ProfessorAIAPI.Classes
 {
     public class ChatRequest
     {
+        [Key]
+        public string SessionId { get; set; }
+        public string? Title { get; set; }
+        public MessageFormat? LastMessage { get; set; }
+        public List<Message>? CacheMessages { get; set; }
+        public List<MessageFormat>? Messages { get; set; }
+        public int? TotalToken { get; set; }
+        public string UserId { get; set; }
+        
 
-        [JsonProperty("model")]
+        public ChatRequest() {
+            this.SessionId = Guid.NewGuid().ToString();
+        }
 
-        public string? Model { get; set; }     // Property to store the AI model used for conversation.
-
-        [JsonProperty("messages")]
-
-        public List<Message> Messages { get; set; }
     }
 
-    // Define a class named Message to represent a single message in a conversation.
-    public class Message
+    public class ChatHistory
     {
-        [JsonProperty("role")]
-        public string Role { get; set; }
+        public string? SessionId { get; set; }
+        public string? Title { get; set; }
 
-        [JsonProperty("content")]
-
-        public string Content { get; set; }
     }
-
-    public class  TopicModel
-    {  
-    public string Topic { get; set; }
-    }
-
-    public class UserTopicModel
-    {
-        public string? userTopic { get; set; }
-    }
-
-    public class ValidationModel
-    {
-        public string valid { get; set; }
-    }
-
-    public class ResponseModel
-    {
-        public string Question { get; set; }
-
-        public string a { get; set; }
-
-        public string b { get; set; }
-        public string c { get; set; }
-        public string d { get; set; }
-        public string correct { get; set; }
-    }
-
 }
