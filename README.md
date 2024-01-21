@@ -1,6 +1,7 @@
 # ProfessorAI
 
-Alpha testing url: https://professoraifrontend.azurewebsites.net/
+Alpha testing url:
+https://professoraifrontend.azurewebsites.net/
 
 the way to run this code is:<br>
 go to terminal or command <br>
@@ -16,6 +17,7 @@ type "npm start"<br>
 
 for the backend part
 it is integrated in c# 
+and used mysql database
 
 <br><br><br>
 Git and node are assumed to be installed on your workstation
