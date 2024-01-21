@@ -14,6 +14,7 @@ function Profile() {
     setNewSubject,
     handleRemoveSubject,
     addSubject,
+    addAI
   } = useContext(SubjectContext);
 
   const userProfile = {
@@ -26,6 +27,12 @@ function Profile() {
     if(user!== undefined)
     getData()
   },[user]);
+
+  useEffect(()=>{
+    addAI();
+  },[]);
+
+
   return (
     <>
       <div className="profile-main">

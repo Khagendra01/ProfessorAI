@@ -17,6 +17,29 @@ const SubjectWrapper = ({ children }) => {
 
   const [newSubject, setNewSubject] = useState("");
 
+  const subjectsToAdd = [ "AI Part I", "AI Part II", "AI Part III", "AI Part IV", ];
+
+  const addAI = async () => {
+
+    subjectsToAdd.forEach((newSubjec) => {
+      // Check if the subject is not empty
+        // Add the subject to the profile
+        addSubjectToProfile({
+          userId: `${user.id}`,
+          subjectValue: `${newSubjec}`,
+        })
+          .then(() => {
+            // Refresh the data after adding the subject
+            getData();
+          })
+          .catch((error) => {
+            // Display an error message if there's an error
+            
+          });
+      
+  })
+
+  }
 
   const getData = async () => {
     getAllSubjects(user.id)
@@ -58,7 +81,7 @@ const SubjectWrapper = ({ children }) => {
   };
 
   return (
-    <SubjectContext.Provider value={{ subjects, setSubjects, newSubject, setNewSubject, handleRemoveSubject, addSubject, getData }}>{children}</SubjectContext.Provider>
+    <SubjectContext.Provider value={{ subjects, setSubjects, newSubject, setNewSubject, handleRemoveSubject, addSubject, getData, addAI }}>{children}</SubjectContext.Provider>
   );
 };
 

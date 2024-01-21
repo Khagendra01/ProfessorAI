@@ -74,3 +74,4 @@ C:\Users\Khage\source\repos\ProfessorAIAPI\ProfessorAIAPI\obj\Debug\net7.0\Profe
 C:\Users\Khage\source\repos\ProfessorAIAPI\ProfessorAIAPI\obj\Debug\net7.0\ref\ProfessorAIAPI.dll
 C:\Users\Khage\source\repos\ProfessorAIAPI\ProfessorAIAPI\bin\Debug\net7.0\build\asset-manifest.json
 C:\Users\Khage\source\repos\ProfessorAIAPI\ProfessorAIAPI\bin\Debug\net7.0\build\manifest.json
+C:\Users\Khage\source\repos\ProfessorAIAPI\ProfessorAIAPI\bin\Debug\net7.0\ProfessorAIAPI.staticwebassets.runtime.json

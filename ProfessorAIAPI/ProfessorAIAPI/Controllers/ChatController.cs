@@ -153,17 +153,7 @@ namespace ProfessorAIAPI.Controllers
             });
 
 
-            /*if (newRequest.Title == "New-Chat")
-            {
-                List<Message> messages = newRequest.CacheMessages;
-                messages.Add(
-                    new Message
-                    {
-                        Role = "user",
-                        Content = "Summarize this conversation into a two word summary"
-                    });
-                newRequest.Title = (await getChatCompletion(messages, newRequest)).Result;
-            }*/
+           
 
             //AddToDB( newRequest );
 
